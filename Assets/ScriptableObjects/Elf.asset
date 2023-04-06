@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7ead92f663e7d346a81582f22f7744d, type: 3}
+  m_Name: Elf
+  m_EditorClassIdentifier: 
+  _characterName: Elf
+  _description: The Elf is great at ranged attacks but has low armor.
+  _health: 700
+  _armor: 10
+  _shotStrengthMin: 1
+  _shotStrengthMax: 1
+  _shotSpeed: 3.5
+  _shotSize: 0
+  _shotMonsterMin: 3
+  _shotMonsterMax: 3
+  _shotGeneratorMin: 2
+  _shotGeneratorMax: 2
+  _shotPotionMonsterMin: 3
+  _shotPotionMonsterMax: 3
+  _shotPotionGeneratorMin: 1
+  _shotPotionGeneratorMax: 1
+  _meleeMonsterMin: 1
+  _meleeMonsterMax: 2
+  _meleeGeneratorChance: 0
+  _speed: 3
