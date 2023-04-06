@@ -2,17 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerTemplate : MonoBehaviour
+[CreateAssetMenu(fileName = "New Character", menuName = "Character Data", order = 51)]
+public class PlayerTemplate : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private string _characterName;
+    [SerializeField]
+    private string _description;
+    [SerializeField]
+    private int goldCost;
+    [SerializeField]
+    private int attackDamage;
+
+    public string CharacterName
     {
-        
+        get { return _characterName; }
+    }
+    public string Description
+    {
+        get { return _description; }
     }
 
-    // Update is called once per frame
-    void Update()
+    public int GoldCost
     {
-        
+        get { return goldCost; }
+    }
+
+    public int AttackDamage
+    {
+        get { return attackDamage; }
     }
 }
