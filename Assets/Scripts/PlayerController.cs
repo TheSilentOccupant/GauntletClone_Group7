@@ -20,6 +20,6 @@ public class PlayerController : MonoBehaviour
         transform.Translate(new Vector3(movementInput.x, 0, movementInput.y) * speed * Time.deltaTime);
     }
 
-    public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
+    public void OnMove(InputAction.CallbackContext contex) => movementInput = contex.ReadValue<Vector2>();
 
 }
