@@ -41,4 +41,18 @@ public class StartMenuManager : MonoBehaviour
         buttonMiddle.gameObject.SetActive(true);
     }
 
+    public void DisplayPlayerProfiles(int playerCount)
+    {
+        if(playerCount > 0)
+        {
+            switch (playerCount)
+            {
+                case 1:
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
 }

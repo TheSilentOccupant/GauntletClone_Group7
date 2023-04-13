@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerTemplate : ScriptableObject
 {
     [SerializeField]
+    private int _playerNumber;
+    [SerializeField]
     private string _characterName;
     [SerializeField]
     private string _description;
@@ -46,6 +48,11 @@ public class PlayerTemplate : ScriptableObject
     [SerializeField]
     private int _speed;
 
+    public int PlayerNumber
+    {
+        set { value = _playerNumber; }
+        get { return _playerNumber; }
+    }
     public string CharacterName
     {
         get { return _characterName; }

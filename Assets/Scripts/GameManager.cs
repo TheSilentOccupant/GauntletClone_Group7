@@ -1,23 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    /*
-    public static PlayerInputController playerInputController;
+    private int _playerCount;
+    private int _controllersConnected;
 
-    // Start is called before the first frame update
-    void Awake()
+    PlayerInputManager playerInputManager;
+
+    public bool isPlayerjoiningAllowed;
+    public bool isPlayerReady;
+
+    public delegate void playerLostDelegate();
+    public event playerLostDelegate playerLostEvent;
+
+
+    private void Awake()
     {
-        playerInputController = new PlayerInputController();
-        playerInputController.Enable();
+        isPlayerjoiningAllowed = false;
+        playerInputManager = GetComponent<PlayerInputManager>();
+        playerInputManager.DisableJoining();
     }
 
-    // Update is called once per frame
-    void Update()
+    
+    private void Update()
     {
+        Debug.Log(Input.GetJoystickNames().Length);
+        //InputAction.CallbackContext contex;
+
+        if (isPlayerjoiningAllowed)
+        {
+            playerInputManager.EnableJoining();
+            _controllersConnected = Input.GetJoystickNames().Length;
+            if (_playerCount != _controllersConnected)
+            {
+                //playerInputManager.JoinPlayerFromActionIfNotAlreadyJoined();
+            }
+        }
         
     }
-    */
+    
+
+    public void PlayerConnected()
+    {
+        _playerCount++;
+    }
 }
