@@ -11,6 +11,7 @@ public class StartMenuManager : MonoBehaviour
     public Button buttonDown;
     public Button buttonLeft;
     public Button buttonRight;
+    public Button buttonMiddle;
     public Text textStartMenu;
     public Text textCharacterMenu;
 
@@ -21,6 +22,7 @@ public class StartMenuManager : MonoBehaviour
         buttonDown.gameObject.SetActive(false);
         buttonLeft.gameObject.SetActive(false);
         buttonRight.gameObject.SetActive(false);
+        buttonMiddle.gameObject.SetActive(false);
     }
 
 
@@ -30,12 +32,13 @@ public class StartMenuManager : MonoBehaviour
         buttonStart.gameObject.SetActive(false);
         //textCharacterMenu.gameObject.SetActive(true);
 
-        buttonUp.Select();
+        buttonMiddle.Select();
 
         buttonUp.gameObject.SetActive(true);
         buttonDown.gameObject.SetActive(true);
         buttonLeft.gameObject.SetActive(true);
         buttonRight.gameObject.SetActive(true);
+        buttonMiddle.gameObject.SetActive(true);
     }
 
 }

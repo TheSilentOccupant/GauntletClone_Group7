@@ -30,10 +30,10 @@
                 {
                     "name": "up",
                     "id": "80ceb1cf-b047-49f5-b0f4-4c4d1cc43352",
-                    "path": "<Keyboard>/w",
+                    "path": "<Gamepad>/dpad/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Controller",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -41,10 +41,10 @@
                 {
                     "name": "down",
                     "id": "85251733-a616-461f-8ec1-18ddd2b6a816",
-                    "path": "<Keyboard>/s",
+                    "path": "<Gamepad>/dpad/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Controller",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -52,10 +52,10 @@
                 {
                     "name": "left",
                     "id": "2281837e-e891-49b2-8b5c-56385dca8eab",
-                    "path": "<Keyboard>/a",
+                    "path": "<Gamepad>/dpad/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Controller",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -63,10 +63,10 @@
                 {
                     "name": "right",
                     "id": "5578b7d2-c46e-4976-9082-28b99f9eb271",
-                    "path": "<Keyboard>/d",
+                    "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Controller",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -122,5 +122,17 @@
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "Controller",
+            "bindingGroup": "Controller",
+            "devices": [
+                {
+                    "devicePath": "<DualSenseGamepadHID>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }
