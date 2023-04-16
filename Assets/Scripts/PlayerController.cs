@@ -5,21 +5,23 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 5;
-    private Vector2 movementInput;
+    private Vector2 _movementInput;
 
-    // Start is called before the first frame update
-    void Start()
+    private PlayerInput _playerInputControl;
+
+    public int playerIndexNumber;
+
+    private void Awake()
     {
-        
+        _playerInputControl = GetComponent<PlayerInput>();
+        playerIndexNumber = _playerInputControl.playerIndex;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(new Vector3(movementInput.x, 0, movementInput.y) * speed * Time.deltaTime);
+        //transform.Translate(new Vector3(_movementInput.x, 0, _movementInput.y) * this.GetComponent<PlayerData>().me.Speed * Time.deltaTime);
     }
 
-    public void OnMove(InputAction.CallbackContext contex) => movementInput = contex.ReadValue<Vector2>();
-
+    public void OnMove(InputAction.CallbackContext contex) => _movementInput = contex.ReadValue<Vector2>();
 }

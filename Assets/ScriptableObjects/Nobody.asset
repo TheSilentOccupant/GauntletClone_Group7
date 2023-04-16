@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7ead92f663e7d346a81582f22f7744d, type: 3}
+  m_Name: Nobody
+  m_EditorClassIdentifier: 
+  _playerNumber: 0
+  _characterName: Nobody
+  _description: 
+  _health: 0
+  _armor: 0
+  _shotStrengthMin: 0
+  _shotStrengthMax: 0
+  _shotSpeed: 0
+  _shotSize: 0
+  _shotMonsterMin: 0
+  _shotMonsterMax: 0
+  _shotGeneratorMin: 0
+  _shotGeneratorMax: 0
+  _shotPotionMonsterMin: 0
+  _shotPotionMonsterMax: 0
+  _shotPotionGeneratorMin: 0
+  _shotPotionGeneratorMax: 0
+  _meleeMonsterMin: 0
+  _meleeMonsterMax: 0
+  _meleeGeneratorChance: 0
+  _speed: 0

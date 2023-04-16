@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    private int _playerCount;
+    public static int playerCount;
     private int _controllersConnected;
 
     PlayerInputManager playerInputManager;
@@ -13,38 +15,74 @@ public class GameManager : MonoBehaviour
     public bool isPlayerjoiningAllowed;
     public bool isPlayerReady;
 
-    public delegate void playerLostDelegate();
-    public event playerLostDelegate playerLostEvent;
+    public static List<GameObject> playerList;
 
 
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
+
         isPlayerjoiningAllowed = false;
         playerInputManager = GetComponent<PlayerInputManager>();
         playerInputManager.DisableJoining();
+        InputSystem.onDeviceChange +=
+        (device, change) =>
+        {
+            switch (change)
+            {
+                case InputDeviceChange.Added:
+                    CheckControllerCount();
+                    break;
+
+                case InputDeviceChange.Removed:
+                    CheckControllerCount();
+                    break;
+            }
+        };
+        playerList = new List<GameObject>();
     }
 
-    
     private void Update()
     {
-        Debug.Log(Input.GetJoystickNames().Length);
-        //InputAction.CallbackContext contex;
 
-        if (isPlayerjoiningAllowed)
+    }
+
+    public void GameStart()
+    {
+        isPlayerjoiningAllowed = true;
+        playerInputManager.EnableJoining();
+        CheckControllerCount();
+    }
+
+    public void CheckControllerCount()
+    {
+        int numberOfGamepads = 0;
+        foreach (InputDevice id in InputSystem.devices)
         {
-            playerInputManager.EnableJoining();
-            _controllersConnected = Input.GetJoystickNames().Length;
-            if (_playerCount != _controllersConnected)
+            if (id.layout.Contains("Dual"))
             {
-                //playerInputManager.JoinPlayerFromActionIfNotAlreadyJoined();
+                numberOfGamepads++;
+            }
+            else if (id.layout.Contains("Joystick"))
+            {
+                numberOfGamepads++;
+            }
+            else if (id.layout.Contains("Gamepad"))
+            {
+                numberOfGamepads++;
+            }
+            else if (id.layout.Contains("Xbox"))
+            {
+                numberOfGamepads++;
             }
         }
-        
     }
     
 
-    public void PlayerConnected()
+    public void PlayerConnected(PlayerInput newPlayer)
     {
-        _playerCount++;
+        //Debug.Log(newPlayer.playerIndex);
+        playerList.Add(newPlayer.gameObject);
+        playerCount++;
     }
 }

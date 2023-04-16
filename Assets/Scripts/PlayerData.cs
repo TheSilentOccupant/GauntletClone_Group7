@@ -1,18 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
 
 public class PlayerData : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    /*
+    public delegate void playerStatsChangedDelegate(PlayerTemplate classHolder);
+    public event playerStatsChangedDelegate playerStatsChangedEvent;
+    */
 
-    // Update is called once per frame
-    void Update()
+    public PlayerTemplate me;
+
+    public void OnDataUpdate(PlayerTemplate classHolder)
     {
-        
+        Debug.Log("Stat Change");
+        me = classHolder;
+        me.PlayerNumber = this.gameObject.GetComponent<PlayerController>().playerIndexNumber;
+        this.gameObject.transform.GetChild(0).gameObject.GetComponent<ProfileUIManager>().playerStatsChangedSubscriber(me);
+        //playerStatsChangedEvent();
+        /*
+        if (me != null)
+        {
+            playerStatsChangedEvent(me);
+        }
+        */
     }
 }
