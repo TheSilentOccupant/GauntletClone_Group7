@@ -681,19 +681,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 938586896}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StartMenuManager, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1350209683526879116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1046,6 +1034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerNumber: {fileID: 2004967985}
+  _playerSprite: {fileID: 538387476}
   _characterName: {fileID: 7238279286877363582}
   _description: {fileID: 0}
   _health: {fileID: 0}
@@ -1706,7 +1695,6 @@ GameObject:
   m_Component:
   - component: {fileID: 213859269591263068}
   - component: {fileID: 1323202667480725962}
-  - component: {fileID: 9042197858044284031}
   - component: {fileID: 2305985304370850633}
   m_Layer: 0
   m_Name: Camera
@@ -1748,9 +1736,9 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.5
     y: 0
-    width: 1
+    width: 0.5
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -1763,7 +1751,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 2
+  m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -1772,14 +1760,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &9042197858044284031
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6725424741412638729}
-  m_Enabled: 1
 --- !u!114 &2305985304370850633
 MonoBehaviour:
   m_ObjectHideFlags: 0

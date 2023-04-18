@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class StartMenuManager : MonoBehaviour
 {
     public GameObject buttonStart;
+    public GameObject mainCamera;
+
     public Text textStartMenu;
     //public Text textCharacterMenu;
 
@@ -27,5 +29,15 @@ public class StartMenuManager : MonoBehaviour
         {
             SceneManager.LoadScene(1);
         }
+    }
+
+    public void PlayerReady()
+    {
+
+    }
+
+    public void PlayerJoined()
+    {
+        mainCamera.SetActive(false);
     }
 }

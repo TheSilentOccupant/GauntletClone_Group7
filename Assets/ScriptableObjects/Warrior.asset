@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ead92f663e7d346a81582f22f7744d, type: 3}
   m_Name: Warrior
   m_EditorClassIdentifier: 
+  _playerNumber: 0
+  _sprite: {fileID: 2100000, guid: f3822e84fd253004681a131cdaf5ff95, type: 2}
   _characterName: Warrior
   _description: The Warrior is great at ranged attacks but has low armor.
   _health: 700

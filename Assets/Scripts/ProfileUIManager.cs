@@ -16,6 +16,8 @@ public class ProfileUIManager : MonoBehaviour
     [SerializeField]
     private Text _playerNumber;
     [SerializeField]
+    private Image _playerSprite;
+    [SerializeField]
     private Text _characterName;
     [SerializeField]
     private Text _description;
@@ -63,6 +65,7 @@ public class ProfileUIManager : MonoBehaviour
     {
         _playerNumber.text = "Player Number: " + me.PlayerNumber;
         _characterName.text = me.CharacterName;
+        _playerSprite.material = me.CharacterSprite;
     }
 
     

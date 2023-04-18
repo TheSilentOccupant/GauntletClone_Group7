@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ead92f663e7d346a81582f22f7744d, type: 3}
   m_Name: Valkyrie
   m_EditorClassIdentifier: 
+  _playerNumber: 0
+  _sprite: {fileID: 2100000, guid: 6a1900334282f954d800defed451f1a6, type: 2}
   _characterName: Valkyrie
   _description: The Elf is great at ranged attacks but has low armor.
   _health: 700

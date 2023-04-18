@@ -14,6 +14,13 @@ public class PlayerData : MonoBehaviour
 
     public PlayerTemplate me;
 
+    public bool playerReady;
+
+    private void Start()
+    {
+        playerReady = false;
+    }
+
     public void OnDataUpdate(PlayerTemplate classHolder)
     {
         Debug.Log("Stat Change");

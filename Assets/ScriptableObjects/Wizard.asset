@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Wizard
   m_EditorClassIdentifier: 
   _playerNumber: 0
+  _sprite: {fileID: 2100000, guid: f8e74253b53d7be45a652c8c4a5c358b, type: 2}
   _characterName: Wizard
   _description: The Wizard is great at ranged attacks but has low armor.
   _health: 700

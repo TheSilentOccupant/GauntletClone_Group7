@@ -8,6 +8,8 @@ public class PlayerTemplate : ScriptableObject
     [SerializeField]
     private int _playerNumber;
     [SerializeField]
+    private Material _sprite;
+    [SerializeField]
     private string _characterName;
     [SerializeField]
     private string _description;
@@ -53,6 +55,12 @@ public class PlayerTemplate : ScriptableObject
         set { value = _playerNumber; }
         get { return _playerNumber; }
     }
+
+    public Material CharacterSprite
+    {
+        get { return _sprite; }
+    }
+
     public string CharacterName
     {
         get { return _characterName; }

@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ead92f663e7d346a81582f22f7744d, type: 3}
   m_Name: Elf
   m_EditorClassIdentifier: 
+  _playerNumber: 0
+  _sprite: {fileID: 2100000, guid: 7e6fa5167ad650740bb25238e399c524, type: 2}
   _characterName: Elf
   _description: The Elf is great at ranged attacks but has low armor.
   _health: 700

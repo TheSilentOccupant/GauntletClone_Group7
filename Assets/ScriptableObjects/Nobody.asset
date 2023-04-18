@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Nobody
   m_EditorClassIdentifier: 
   _playerNumber: 0
+  _sprite: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   _characterName: Nobody
   _description: 
   _health: 0
