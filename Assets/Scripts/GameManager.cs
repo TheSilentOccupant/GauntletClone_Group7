@@ -8,11 +8,16 @@ using UnityEngine.InputSystem;
 public class GameManager : Singleton<GameManager>
 {
     public static int playerCount;
+<<<<<<< HEAD
     public static int playerReadyCount;
     private int _controllersConnected;
 
     public GameObject startMenu;
 
+=======
+    private int _controllersConnected;
+
+>>>>>>> parent of ddfcd99 (Merge remote-tracking branch 'origin/West')
     PlayerInputManager playerInputManager;
 
     public bool isPlayerjoiningAllowed;
@@ -80,18 +85,25 @@ public class GameManager : Singleton<GameManager>
             }
         }
     }
+<<<<<<< HEAD
 
     public static void PlayerClassDecidedSubscriber()
     {
         playerReadyCount++;
     }
 
+=======
+    
+>>>>>>> parent of ddfcd99 (Merge remote-tracking branch 'origin/West')
 
     public void PlayerConnected(PlayerInput newPlayer)
     {
         //Debug.Log(newPlayer.playerIndex);
         playerList.Add(newPlayer.gameObject);
+<<<<<<< HEAD
         //newPlayer.gameObject.transform.GetChild(0).gameObject.GetComponent<ProfileUIManager>().playerDecidedEvent += PlayerClassDecidedSubscriber;
+=======
+>>>>>>> parent of ddfcd99 (Merge remote-tracking branch 'origin/West')
         playerCount++;
     }
 }
