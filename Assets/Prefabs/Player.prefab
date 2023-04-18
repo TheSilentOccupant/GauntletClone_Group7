@@ -282,9 +282,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StartMenuManager, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 2138387630857787280}
+        m_TargetAssemblyTypeName: ProfileUIManager, Assembly-CSharp
+        m_MethodName: PlayerClassDecided
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -681,7 +681,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 938586896}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2138387630857787280}
+        m_TargetAssemblyTypeName: ProfileUIManager, Assembly-CSharp
+        m_MethodName: PlayerClassDecided
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1350209683526879116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -964,9 +976,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StartMenuManager, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 2138387630857787280}
+        m_TargetAssemblyTypeName: ProfileUIManager, Assembly-CSharp
+        m_MethodName: PlayerClassDecided
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1319,9 +1331,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StartMenuManager, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 2138387630857787280}
+        m_TargetAssemblyTypeName: ProfileUIManager, Assembly-CSharp
+        m_MethodName: PlayerClassDecided
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1968,6 +1980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   me: {fileID: 11400000, guid: 180db1da1fc37cf46a9db32b84a08b11, type: 2}
+  playerReady: 0
 --- !u!114 &-366614401122566385
 MonoBehaviour:
   m_ObjectHideFlags: 0

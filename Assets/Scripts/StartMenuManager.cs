@@ -13,7 +13,6 @@ public class StartMenuManager : MonoBehaviour
     public Text textStartMenu;
     //public Text textCharacterMenu;
 
-    private int _playerDecisionMade = 0;
 
     public void Onstart()
     {
@@ -22,21 +21,18 @@ public class StartMenuManager : MonoBehaviour
         //textCharacterMenu.gameObject.SetActive(true);
     }
 
-    public void OnPlayerDecision()
+    private void Update()
     {
-        _playerDecisionMade++;
-        if (_playerDecisionMade == GameManager.playerCount)
+        if (GameManager.playerReadyCount > 0)
         {
-            SceneManager.LoadScene(1);
+            if (GameManager.playerReadyCount == GameManager.playerCount)
+            {
+                SceneManager.LoadScene(1);
+            }
         }
     }
 
-    public void PlayerReady()
-    {
-
-    }
-
-    public void PlayerJoined()
+    public void PlayerJoined(PlayerInput newPlayer)
     {
         mainCamera.SetActive(false);
     }

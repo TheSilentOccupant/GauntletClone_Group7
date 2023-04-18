@@ -11,6 +11,9 @@ public class ProfileUIManager : MonoBehaviour
     public GameObject playerProfile;
     */
 
+    public delegate void playerDecidedDelegate();
+    public event playerDecidedDelegate playerDecidedEvent;
+
     //public PlayerTemplate me;
 
     [SerializeField]
@@ -68,10 +71,16 @@ public class ProfileUIManager : MonoBehaviour
         _playerSprite.material = me.CharacterSprite;
     }
 
+    public void PlayerClassDecided()
+    {
+        GameManager.PlayerClassDecidedSubscriber();
+    }
+
     
     private void Start()
     {
-       //this.transform.parent.gameObject.GetComponent<PlayerData>().playerStatsChangedEvent += playerStatsChangedSubscriber;
+
+       
     }
     
 }
