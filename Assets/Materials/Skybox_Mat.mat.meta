@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Materials/Skybox_Mat.mat.meta
 guid: 0ffaa0b7117ba8c47a9d05ae701d4b4d
+========
+guid: 2dd802e4d37c65149922028d3e973832
+>>>>>>>> parent of ddfcd99 (Merge remote-tracking branch 'origin/West'):Assets/Presets/AudioCompressedInMemory.preset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 0

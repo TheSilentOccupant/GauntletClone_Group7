@@ -8,10 +8,13 @@ using UnityEngine.InputSystem;
 public class GameManager : Singleton<GameManager>
 {
     public static int playerCount;
+
     public static int playerReadyCount;
     private int _controllersConnected;
 
     public GameObject startMenu;
+
+    private int _controllersConnected;
 
     PlayerInputManager playerInputManager;
 

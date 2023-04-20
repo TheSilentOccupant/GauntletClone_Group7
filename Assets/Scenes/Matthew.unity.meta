@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Matthew.unity.meta
 guid: 26822cd18ec78dd4faaa6c15bb1cd450
+========
+guid: 71ea82b02df99c2439e0dc8e4e1ebc24
+folderAsset: yes
+>>>>>>>> parent of ddfcd99 (Merge remote-tracking branch 'origin/West'):Assets/Presets/Defaults.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
