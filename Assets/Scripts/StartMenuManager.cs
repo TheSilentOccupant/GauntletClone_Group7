@@ -27,7 +27,7 @@ public class StartMenuManager : MonoBehaviour
         {
             if (GameManager.playerReadyCount == GameManager.playerCount)
             {
-                SceneManager.LoadScene(1);
+                LevelManager.NextLevel();
             }
         }
     }

@@ -838,6 +838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff24d4a3fc83fa488cc4daa78937c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMenu: {fileID: 0}
   isPlayerjoiningAllowed: 0
   isPlayerReady: 0
 --- !u!4 &1780500562
