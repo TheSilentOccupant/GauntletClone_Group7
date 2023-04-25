@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelManager : Singleton<GameManager>
+public class LevelManager : Singleton<LevelManager>
 {
     public static int currentScene;
 
-    private void Awake()
+    public override void Awake()
     {
         base.Awake();
-        currentScene = 0;
+        currentScene = 1;
+    }
+
+    public static void NextLevelMenuButton()
+    {
+        SceneManager.LoadScene(1);
     }
 
     public static void NextLevel()

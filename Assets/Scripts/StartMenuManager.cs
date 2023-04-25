@@ -11,26 +11,14 @@ public class StartMenuManager : MonoBehaviour
     public GameObject mainCamera;
 
     public Text textStartMenu;
-    //public Text textCharacterMenu;
 
 
     public void Onstart()
     {
         textStartMenu.gameObject.SetActive(false);
         buttonStart.gameObject.SetActive(false);
-        //textCharacterMenu.gameObject.SetActive(true);
     }
 
-    private void Update()
-    {
-        if (GameManager.playerReadyCount > 0)
-        {
-            if (GameManager.playerReadyCount == GameManager.playerCount)
-            {
-                LevelManager.NextLevel();
-            }
-        }
-    }
 
     public void PlayerJoined(PlayerInput newPlayer)
     {

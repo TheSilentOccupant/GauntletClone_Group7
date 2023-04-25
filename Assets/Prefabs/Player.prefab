@@ -1045,6 +1045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6fde3eaeeb7e334282f159bcdca5a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClassMenu: {fileID: 4075604691831387476}
   _playerNumber: {fileID: 2004967985}
   _playerSprite: {fileID: 538387476}
   _characterName: {fileID: 7238279286877363582}

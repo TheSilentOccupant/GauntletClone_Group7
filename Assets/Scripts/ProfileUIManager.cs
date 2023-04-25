@@ -11,6 +11,8 @@ public class ProfileUIManager : MonoBehaviour
     public GameObject playerProfile;
     */
 
+    public GameObject ClassMenu;
+
     public delegate void playerDecidedDelegate();
     public event playerDecidedDelegate playerDecidedEvent;
 
@@ -66,21 +68,15 @@ public class ProfileUIManager : MonoBehaviour
 
     public void playerStatsChangedSubscriber(PlayerTemplate me)
     {
-        _playerNumber.text = "Player Number: " + me.PlayerNumber;
+        _playerNumber.text = "Player: " + me.PlayerNumber;
         _characterName.text = me.CharacterName;
         _playerSprite.material = me.CharacterSprite;
     }
 
     public void PlayerClassDecided()
     {
+        ClassMenu.SetActive(false);
         GameManager.PlayerClassDecidedSubscriber();
-    }
-
-    
-    private void Start()
-    {
-
-       
     }
     
 }

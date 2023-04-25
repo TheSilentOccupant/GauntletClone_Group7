@@ -52,7 +52,7 @@ public class PlayerTemplate : ScriptableObject
 
     public int PlayerNumber
     {
-        set { value = _playerNumber; }
+        set { _playerNumber = value; }
         get { return _playerNumber; }
     }
 

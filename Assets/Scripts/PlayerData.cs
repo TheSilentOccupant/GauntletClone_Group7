@@ -25,7 +25,8 @@ public class PlayerData : MonoBehaviour
     {
         Debug.Log("Stat Change");
         me = classHolder;
-        me.PlayerNumber = this.gameObject.GetComponent<PlayerController>().playerIndexNumber;
+        me.PlayerNumber = this.gameObject.GetComponent<PlayerController>().playerIndexNumber + 2;
+        Debug.Log(me.PlayerNumber);
         this.gameObject.transform.GetChild(0).gameObject.GetComponent<ProfileUIManager>().playerStatsChangedSubscriber(me);
         //playerStatsChangedEvent();
         /*
