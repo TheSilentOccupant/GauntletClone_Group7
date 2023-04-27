@@ -85,7 +85,8 @@ public class GameManager : Singleton<GameManager>
     public static void PlayerClassDecidedSubscriber()
     {
         playerReadyCount++;
-        LevelManager.NextLevelMenuButton();
+        //LevelManager.NextLevelMenuButton();
+        LevelManager.NextLevel();
     }
 
     public void PlayerConnected(PlayerInput newPlayer)

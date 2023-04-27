@@ -9,7 +9,8 @@ public class PlayerSetSpawnPosition : MonoBehaviour
 
     void Start()
     {
-        if(_playerIDNumber < GameManager.playerList.Count)
-            GameManager.playerList[_playerIDNumber].gameObject.transform.position = this.gameObject.transform.position;
+        Debug.Log("Spawning Player");
+        if(_playerIDNumber <= GameManager.playerList.Count)
+            GameManager.playerList[_playerIDNumber-1].gameObject.transform.position = this.gameObject.transform.position;
     }
 }

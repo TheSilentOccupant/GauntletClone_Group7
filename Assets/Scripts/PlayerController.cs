@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.Translate(new Vector3(_movementInput.x, 0, _movementInput.y) * this.GetComponent<PlayerData>().me.Speed * Time.deltaTime);
+        transform.Translate(new Vector3(_movementInput.x, 0, _movementInput.y) * this.GetComponent<PlayerData>().me.Speed * Time.deltaTime);
     }
 
     public void OnMove(InputAction.CallbackContext contex) => _movementInput = contex.ReadValue<Vector2>();

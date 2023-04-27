@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -23,5 +24,6 @@ public class StartMenuManager : MonoBehaviour
     public void PlayerJoined(PlayerInput newPlayer)
     {
         mainCamera.SetActive(false);
+        buttonStart.GetComponent<MultiplayerEventSystem>().SetSelectedGameObject(null);
     }
 }
