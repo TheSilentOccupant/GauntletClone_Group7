@@ -13,11 +13,6 @@ public class LevelManager : Singleton<LevelManager>
         currentScene = 1;
     }
 
-    public static void NextLevelMenuButton()
-    {
-        SceneManager.LoadScene(1);
-    }
-
     public static void NextLevel()
     {
         SceneManager.LoadScene(currentScene++);
