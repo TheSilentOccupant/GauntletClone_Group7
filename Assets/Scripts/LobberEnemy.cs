@@ -17,10 +17,9 @@ public class LobberEnemy : Enemy
 
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        _player = GameObject.Find("Player");
-        _agent = this.GetComponent<NavMeshAgent>();
+        base.Start();
         _agent.stoppingDistance = 5f;
     }
 
@@ -31,7 +30,7 @@ public class LobberEnemy : Enemy
 
         if (!PlayerInRange)
         {
-            _agent.destination = _player.transform.position;
+            FindPlayer();
         }
         else
         {
@@ -42,7 +41,8 @@ public class LobberEnemy : Enemy
     private void AttackPlayer()
     {
         _agent.SetDestination(transform.position);
-        transform.LookAt(_player.transform);
+        if(_target != null)
+            transform.LookAt(_target.transform);
 
         if (!attacked)
         {

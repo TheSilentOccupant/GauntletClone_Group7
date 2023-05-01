@@ -12,12 +12,17 @@ public class GameManager : Singleton<GameManager>
 
     public static int playerReadyCount;
 
+    public static float clockGameTime = 0;
+
+    public static bool isGameStarted;
+
     private int _controllersConnected;
 
     PlayerInputManager playerInputManager;
 
     public bool isPlayerjoiningAllowed;
     public bool isPlayerReady;
+    
 
     public static List<GameObject> playerList;
 

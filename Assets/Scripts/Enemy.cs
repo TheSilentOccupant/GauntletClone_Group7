@@ -9,28 +9,42 @@ public class Enemy : MonoBehaviour
 
     private Vector3 _location;
 
-    protected private GameObject _player;
+    protected private GameObject _target;
 
     protected private NavMeshAgent _agent;
 
     public int health { get { return _health; } set { value = _health; } }
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
-        _player = GameObject.Find("Player");
         _agent = this.GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        _agent.destination = _player.transform.position;
+        FindPlayer();
+        if(_target != null)
+            _agent.destination = _target.transform.position;
     }
 
     public void TakeDamage(int damage)
     {
         _health -= damage;
+    }
+
+    protected void FindPlayer()
+    {
+        float tempPlayerDistance = 0;
+        for (int i = 0; i < GameManager.playerList.Count; i++)
+        {
+            if (tempPlayerDistance >= Vector3.Distance(this.transform.position, GameManager.playerList[i].transform.position))
+            {
+                tempPlayerDistance = Vector3.Distance(this.transform.position, GameManager.playerList[i].transform.position);
+                _target = GameManager.playerList[i];
+            }
+        }
     }
     
 

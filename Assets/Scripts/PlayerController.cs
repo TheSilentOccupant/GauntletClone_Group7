@@ -60,21 +60,25 @@ public class PlayerController : MonoBehaviour
             _playerBody.transform.eulerAngles = new Vector3(0, 0, 0);
         }
 
-        if (_movementInput == new Vector2(-0.7f, 0.7f))
+        if (_movementInput == new Vector2(0.7f, 0.7f))
         {
             Debug.Log("1");
+            _playerBody.transform.eulerAngles = new Vector3(0, 45, 0);
         }
-        if (_movementInput == new Vector2(-0.7f, 0.7f))
+        if (_movementInput == new Vector2(0.7f, -0.7f))
         {
             Debug.Log("2");
+            _playerBody.transform.eulerAngles = new Vector3(0, 135, 0);
         }
         if (_movementInput == new Vector2(-0.7f, 0.7f))
         {
             Debug.Log("3");
+            _playerBody.transform.eulerAngles = new Vector3(0, 225, 0);
         }
-        if (_movementInput == new Vector2(-0.7f, 0.7f))
+        if (_movementInput == new Vector2(-0.7f, -0.7f))
         {
             Debug.Log("4");
+            _playerBody.transform.eulerAngles = new Vector3(0, 315, 0);
         }
     }
 } 
