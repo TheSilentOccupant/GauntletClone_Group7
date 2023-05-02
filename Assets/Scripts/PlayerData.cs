@@ -12,7 +12,7 @@ public class PlayerData : MonoBehaviour
     public event playerStatsChangedDelegate playerStatsChangedEvent;
     */
 
-    public PlayerTemplate me;
+    public PlayerTemplate PlayerDataObject;
 
     public bool playerReady;
 
@@ -24,10 +24,10 @@ public class PlayerData : MonoBehaviour
     public void OnDataUpdate(PlayerTemplate classHolder)
     {
         Debug.Log("Stat Change");
-        me = classHolder;
-        me.PlayerNumber = this.gameObject.GetComponent<PlayerController>().playerIndexNumber + 2;
-        Debug.Log(me.PlayerNumber);
-        this.gameObject.transform.GetChild(0).gameObject.GetComponent<ProfileUIManager>().playerStatsChangedSubscriber(me);
+        PlayerDataObject = classHolder;
+        PlayerDataObject.PlayerNumber = this.gameObject.GetComponent<PlayerController>().playerIndexNumber + 1;
+        Debug.Log(PlayerDataObject.PlayerNumber);
+        this.gameObject.transform.GetChild(0).gameObject.GetComponent<ProfileUIManager>().playerStatsChangedSubscriber(PlayerDataObject);
         //playerStatsChangedEvent();
         /*
         if (me != null)
