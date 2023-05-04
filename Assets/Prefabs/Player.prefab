@@ -307,6 +307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   classHolder: {fileID: 11400000, guid: 594d9d71814cf7e439c44c087a98aa97, type: 2}
+  _myPlayerData: {fileID: 6704782508991089964}
 --- !u!1 &538387474
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,6 +708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   classHolder: {fileID: 11400000, guid: 298f865b0291ce04faabc81e0695fc1c, type: 2}
+  _myPlayerData: {fileID: 6704782508991089964}
 --- !u!1 &1315008065
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,6 +856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   classHolder: {fileID: 11400000, guid: 180db1da1fc37cf46a9db32b84a08b11, type: 2}
+  _myPlayerData: {fileID: 6704782508991089964}
 --- !u!1 &1592894486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,6 +1004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   classHolder: {fileID: 11400000, guid: 4b3ffbb9fc854f64c8af53fd24f0dd5f, type: 2}
+  _myPlayerData: {fileID: 6704782508991089964}
 --- !u!1 &1719421768
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,6 +1361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   classHolder: {fileID: 11400000, guid: 606a0dc12aebbb4498e8bd33871c88a2, type: 2}
+  _myPlayerData: {fileID: 6704782508991089964}
 --- !u!1 &2004967983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,7 +1612,7 @@ GameObject:
   - component: {fileID: 8543436131792030388}
   - component: {fileID: 3959019968393687509}
   m_Layer: 0
-  m_Name: Capsule (1)
+  m_Name: playerHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1826,6 +1831,49 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &4330197242860257740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8708895200215320318}
+  - component: {fileID: 5187373929320893312}
+  m_Layer: 0
+  m_Name: PlayerWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8708895200215320318
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4330197242860257740}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.093, z: -0.583}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8759488278144097519}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5187373929320893312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4330197242860257740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf1c7c5974ca9c8478b618c9180a7c68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6725424741412638729
 GameObject:
   m_ObjectHideFlags: 0
@@ -1947,7 +1995,7 @@ GameObject:
   - component: {fileID: 2478652889884617676}
   - component: {fileID: 5403609870869364282}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: playerBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2043,6 +2091,7 @@ GameObject:
   - component: {fileID: 8759488278144097522}
   - component: {fileID: 8759488278144097523}
   - component: {fileID: 6704782508991089964}
+  - component: {fileID: 2631779532223672384}
   - component: {fileID: -366614401122566385}
   - component: {fileID: -6714092790651672724}
   m_Layer: 0
@@ -2067,6 +2116,7 @@ Transform:
   - {fileID: 213859269591263068}
   - {fileID: 7864746233106008552}
   - {fileID: 488937812597497589}
+  - {fileID: 8708895200215320318}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2167,8 +2217,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df889613c1c99e41a4869a19317457f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   PlayerDataObject: {fileID: 0}
+=======
+  me: {fileID: 11400000, guid: 180db1da1fc37cf46a9db32b84a08b11, type: 2}
+  _myProfileUIManager: {fileID: 2138387630857787280}
+  _myPlayerAvatarController: {fileID: 2631779532223672384}
+>>>>>>> Stashed changes
   playerReady: 0
+--- !u!114 &2631779532223672384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8759488278144097521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a8f982c5812ea247a017502d265e346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _PlayerBody: {fileID: 8233913413464932708}
+  _PlayerHead: {fileID: 1920436694131016969}
 --- !u!114 &-366614401122566385
 MonoBehaviour:
   m_ObjectHideFlags: 0

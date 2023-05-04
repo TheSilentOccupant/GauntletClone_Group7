@@ -6,8 +6,12 @@ using UnityEngine.EventSystems;
 public class Button : MonoBehaviour, ISelectHandler
 {
     public PlayerTemplate classHolder;
+
+    [SerializeField]
+    private PlayerData _myPlayerData;
+
     public void OnSelect(BaseEventData eventData)
     {
-        this.gameObject.transform.parent.parent.gameObject.GetComponent<PlayerData>().OnDataUpdate(classHolder);
+        _myPlayerData.OnDataUpdate(classHolder);
     }
 }

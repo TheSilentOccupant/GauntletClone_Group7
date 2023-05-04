@@ -66,7 +66,7 @@ public class ProfileUIManager : MonoBehaviour
         //playerProfile.SetActive(isEnabled);
     }
 
-    public void playerStatsChangedSubscriber(PlayerTemplate me)
+    public void PlayerStatsChangedSubscriber(PlayerTemplate me)
     {
         _playerNumber.text = "Player: " + me.PlayerNumber;
         _characterName.text = me.CharacterName;

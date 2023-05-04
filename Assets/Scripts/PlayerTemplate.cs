@@ -49,6 +49,14 @@ public class PlayerTemplate : ScriptableObject
     private Chance _meleeGeneratorChance;
     [SerializeField]
     private int _speed;
+    [SerializeField]
+    private Color _playerBodyColor;
+    [SerializeField]
+    private Color _playerHeadColor;
+    [SerializeField]
+    private Color _playerAttackColor;
+    [SerializeField]
+    private GameObject _playerAttackProjectile;
 
     public int PlayerNumber
     {
@@ -158,5 +166,25 @@ public class PlayerTemplate : ScriptableObject
     public int Speed
     {
         get { return _speed; }
+    }
+
+    public Color PlayerBodyColor
+    {
+        get { return _playerBodyColor; }
+    }
+
+    public Color PlayerHeadColor
+    {
+        get { return _playerHeadColor; }
+    }
+
+    public Color PlayerAttackColor
+    {
+        get { return _playerAttackColor; }
+    }
+
+    public GameObject PlayerAttackProjectile
+    {
+        get { return _playerAttackProjectile; }
     }
 }

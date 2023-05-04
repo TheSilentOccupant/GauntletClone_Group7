@@ -34,3 +34,6 @@ MonoBehaviour:
   _meleeMonsterMax: 2
   _meleeGeneratorChance: 0
   _speed: 3
+  _PlayerBodyColor: {r: 0, g: 1, b: 0.00427413, a: 0}
+  _PlayerHeadColor: {r: 1, g: 0.99149597, b: 0, a: 0}
+  _PlayerAttackColor: {r: 0.7877358, g: 1, b: 0.7923268, a: 0}

@@ -22,15 +22,19 @@ public class PlayerController : MonoBehaviour
         _playerInputControl = GetComponent<PlayerInput>();
         playerIndexNumber = _playerInputControl.playerIndex;
 
+<<<<<<< Updated upstream
         _playerInputController = new PlayerInputController();
         _playerInputController.Player.Movement.performed += ctx => _movementInput = ctx.ReadValue<Vector2>();
         _playerInputController.Player.Movement.canceled += ctx => _movementInput = Vector2.zero;
         _playerInputController.Enable();
+=======
+>>>>>>> Stashed changes
     }
 
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        _playerInputControl.Player.Shoot.performed += context => Shoot(context);
     }
 
     // Update is called once per frame
