@@ -9,13 +9,13 @@ public class PlayerWeapon : MonoBehaviour
     public void OnFire()
     {
         GameObject tempBullet;
-        tempBullet = Instantiate(_myPlayerData.me.PlayerAttackProjectile,
+        tempBullet = Instantiate(_myPlayerData.playerDataObject.PlayerAttackProjectile,
             GetComponent<Transform>().position,
             GetComponent<Transform>().rotation);
 
         var dir = (this.transform.up).normalized;
         tempBullet.transform.position = tempBullet.transform.position + (dir * 1.05f);
         Debug.Log(tempBullet.transform.position);
-        tempBullet.GetComponent<Rigidbody>().velocity = dir * (_myPlayerData.me.ShotSpeed);
+        tempBullet.GetComponent<Rigidbody>().velocity = dir * (_myPlayerData.playerDataObject.ShotSpeed);
     }
 }

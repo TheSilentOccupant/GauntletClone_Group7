@@ -13,8 +13,10 @@ public class ProfileUIManager : MonoBehaviour
 
     public GameObject ClassMenu;
 
+    /*
     public delegate void playerDecidedDelegate();
     public event playerDecidedDelegate playerDecidedEvent;
+    */
 
     //public PlayerTemplate me;
 

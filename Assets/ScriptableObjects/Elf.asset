@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ead92f663e7d346a81582f22f7744d, type: 3}
   m_Name: Elf
   m_EditorClassIdentifier: 
-  _playerNumber: 0
+  _playerNumber: 2
   _sprite: {fileID: 2100000, guid: 7e6fa5167ad650740bb25238e399c524, type: 2}
   _characterName: Elf
   _description: The Elf is great at ranged attacks but has low armor.
@@ -34,6 +34,7 @@ MonoBehaviour:
   _meleeMonsterMax: 2
   _meleeGeneratorChance: 0
   _speed: 3
-  _PlayerBodyColor: {r: 0, g: 1, b: 0.00427413, a: 0}
-  _PlayerHeadColor: {r: 1, g: 0.99149597, b: 0, a: 0}
-  _PlayerAttackColor: {r: 0.7877358, g: 1, b: 0.7923268, a: 0}
+  _playerBodyColor: {r: 0.0069465367, g: 0.6792453, b: 0, a: 0}
+  _playerHeadColor: {r: 1, g: 0.88931614, b: 0.16509432, a: 0}
+  _playerAttackColor: {r: 0.65885735, g: 0.8867924, b: 0.6316305, a: 0}
+  _playerAttackProjectile: {fileID: 0}
