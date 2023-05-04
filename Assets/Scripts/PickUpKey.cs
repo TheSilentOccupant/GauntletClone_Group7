@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Key : MonoBehaviour
+public class PickUpKey : PickUpParent
 {
     [SerializeField]
     private GameObject _doorHolder;
@@ -15,11 +15,8 @@ public class Key : MonoBehaviour
         _keyColorCode.GetComponent<MeshRenderer>().material.color = _doorHolder.GetComponent<MeshRenderer>().material.color;
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected override void OnInteraction()
     {
-        if (other.gameObject.tag == "Player")
-        {
-            _doorHolder.SetActive(false);
-        }
+        _doorHolder.SetActive(false);
     }
 }

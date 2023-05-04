@@ -11,7 +11,6 @@ public class PlayerData : MonoBehaviour
     public delegate void playerStatsChangedDelegate(PlayerTemplate classHolder);
     public event playerStatsChangedDelegate playerStatsChangedEvent;
     */
-
     public PlayerTemplate playerDataObject;
 
     [SerializeField]

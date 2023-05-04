@@ -37,4 +37,4 @@ MonoBehaviour:
   _playerBodyColor: {r: 0.95213556, g: 1, b: 0, a: 0}
   _playerHeadColor: {r: 1, g: 1, b: 1, a: 0}
   _playerAttackColor: {r: 0.8396226, g: 0.82917744, b: 0.4950605, a: 0}
-  _playerAttackProjectile: {fileID: 0}
+  _playerAttackProjectile: {fileID: 350639652235205228, guid: 3e4ff95414d33904a87d88f85094498c, type: 3}

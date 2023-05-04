@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private PlayerInput _playerInputControl;
 
     private PlayerInputController _playerInputController;
+
+    private Vector2 _previousInput;
     
     public int playerIndexNumber;
 
@@ -34,7 +36,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-        _playerInputController.Player.Shoot.performed += context => Shoot(context);
+        //_playerInputController.Player.Shoot.performed += context => Shoot(context);
     }
 
     // Update is called once per frame
@@ -42,7 +44,14 @@ public class PlayerController : MonoBehaviour
     {
         if(_movementInput != Vector2.zero && GameManager.isGameStarted)
             transform.Translate(new Vector3(_movementInput.x, 0, _movementInput.y) * _myPlayerData.playerDataObject.Speed * Time.deltaTime);
-        /*
+        Debug.Log(_movementInput);
+
+        
+        
+    }
+    /*
+    private void LateUpdate()
+    {
         if (_movementInput != Vector2.zero)
         {
             if (_movementInput == new Vector2(-1, 0))
@@ -82,61 +91,63 @@ public class PlayerController : MonoBehaviour
                 _playerBody.transform.eulerAngles = new Vector3(0, 315, 0);
             }
         }
-        */
     }
+    */
 
-    private void Shoot(InputAction.CallbackContext context)
+    public void Shoot(InputAction.CallbackContext context)
     {
-        _playerWeapon.GetComponent<PlayerWeapon>().OnFire();
+        if(context.canceled)
+            _playerWeapon.GetComponent<PlayerWeapon>().OnFire();
     }
 
     
     public void OnMove(InputAction.CallbackContext contex)
     {
-        _movementInput.x = contex.ReadValue<Vector2>().x;
-        _movementInput.y = contex.ReadValue<Vector2>().y;
-        //float test = contex.ReadValue<Vector2>().x;
-        //Debug.Log(test);
-        //Player face right
-        if (_movementInput == new Vector2(-1, 0))
+        if(contex.performed)
         {
-            _playerBody.transform.eulerAngles = new Vector3(0, 90, 0);
-        }
-        //Player face left
-        else if (_movementInput == new Vector2(1, 0))
-        {
-            _playerBody.transform.eulerAngles = new Vector3(0, 270, 0);
-        }
-        //Player face up
-        else if (_movementInput == new Vector2(0, 1))
-        {
-            _playerBody.transform.eulerAngles = new Vector3(0, 180, 0);
-        }
-        //Player face down
-        else if (_movementInput == new Vector2(0, -1))
-        {
-            _playerBody.transform.eulerAngles = new Vector3(0, 0, 0);
-        }
+            _movementInput.x = contex.ReadValue<Vector2>().x;
+            _movementInput.y = contex.ReadValue<Vector2>().y;
 
-        else if (_movementInput == new Vector2(-0.707107f, -0.707107f))
-        {
-            Debug.Log("1");
-            _playerBody.transform.eulerAngles = new Vector3(0, 45, 0);
-        }
-        else if (_movementInput == new Vector2(+0.707107f, 0.707107f))
-        {
-            Debug.Log("2");
-            _playerBody.transform.eulerAngles = new Vector3(0, 135, 0);
-        }
-        else if (_movementInput == new Vector2(0.707107f, 0.707107f))
-        {
-            Debug.Log("3");
-            _playerBody.transform.eulerAngles = new Vector3(0, 225, 0);
-        }
-        else if (_movementInput == new Vector2(0.707107f, +0.707107f))
-        {
-            //Debug.Log("4");
-            _playerBody.transform.eulerAngles = new Vector3(0, 315, 0);
+            if (_movementInput == new Vector2(-1, 0))
+            {
+                _playerBody.transform.eulerAngles = new Vector3(0, 90, 0);
+            }
+            //Player face left
+            else if (_movementInput == new Vector2(1, 0))
+            {
+                _playerBody.transform.eulerAngles = new Vector3(0, 270, 0);
+            }
+            //Player face up
+            else if (_movementInput == new Vector2(0, 1))
+            {
+                _playerBody.transform.eulerAngles = new Vector3(0, 180, 0);
+            }
+            //Player face down
+            else if (_movementInput == new Vector2(0, -1))
+            {
+                _playerBody.transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+
+            else if (_movementInput == new Vector2(-0.707107f, -0.707107f))
+            {
+                Debug.Log("1");
+                _playerBody.transform.eulerAngles = new Vector3(0, 45, 0);
+            }
+            else if (_movementInput == new Vector2(-0.707107f, 0.707107f))
+            {
+                Debug.Log("2");
+                _playerBody.transform.eulerAngles = new Vector3(0, 135, 0);
+            }
+            else if (_movementInput == new Vector2(0.707107f, 0.707107f))
+            {
+                Debug.Log("3");
+                _playerBody.transform.eulerAngles = new Vector3(0, 225, 0);
+            }
+            else if (_movementInput == new Vector2(0.707107f, -0.707107f))
+            {
+                //Debug.Log("4");
+                _playerBody.transform.eulerAngles = new Vector3(0, 315, 0);
+            }
         }
         //transform.Translate(new Vector3(_movementInput.x, 0, _movementInput.y) * this.GetComponent<PlayerData>().PlayerDataObject.Speed * Time.deltaTime);
     }

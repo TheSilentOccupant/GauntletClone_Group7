@@ -16,6 +16,8 @@ public class GameManager : Singleton<GameManager>
 
     public static bool isGameStarted;
 
+    public static int globalProjectileSpeed = 1;
+
     private int _controllersConnected;
 
     PlayerInputManager playerInputManager;

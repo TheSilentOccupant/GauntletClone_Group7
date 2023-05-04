@@ -9,14 +9,14 @@
                     "name": "Movement",
                     "type": "PassThrough",
                     "id": "6ef5e3ad-73d5-472f-accb-c8c224afa0a2",
-                    "expectedControlType": "Dpad",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
                 {
                     "name": "Shoot",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "8ba2a15e-5505-4f34-865a-5922524fe1a2",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -81,65 +81,10 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "2D Vector",
-                    "id": "3ebe0e01-94a8-4367-be50-eaaa79e65bcd",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "893773ce-f808-46e9-976c-b354188b4e54",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "e8aa9a07-039d-4dce-b76e-a37edc80cba4",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "210eefe7-68dd-446f-9c15-414cd34b9ca9",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "0ab9c581-ea0b-4403-a038-073d524f9c79",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "30a76ea6-2047-4547-9470-b30595e0d46c",
                     "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
@@ -204,56 +149,12 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "c18d631a-0693-403e-b526-d353e25f1af4",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "0596f3ed-2b87-4828-a03b-3391a404696f",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "37ac173d-a0bb-485d-b4e1-58ec7e20a84e",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "33021856-1c48-499a-9f8b-b968171efe17",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "989fbbad-757a-4fa6-9431-8e145ece6687",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller;Keyboard;Controller2",
+                    "groups": "Controller;Controller2",
                     "action": "Submit",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -279,17 +180,6 @@
             "devices": [
                 {
                     "devicePath": "<Gamepad>",
-                    "isOptional": false,
-                    "isOR": false
-                }
-            ]
-        },
-        {
-            "name": "Keyboard",
-            "bindingGroup": "Keyboard",
-            "devices": [
-                {
-                    "devicePath": "<Keyboard>",
                     "isOptional": false,
                     "isOR": false
                 }

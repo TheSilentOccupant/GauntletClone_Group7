@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour
 {
+    [SerializeField]
     private PlayerData _myPlayerData;
 
     public void OnFire()
@@ -12,10 +13,11 @@ public class PlayerWeapon : MonoBehaviour
         tempBullet = Instantiate(_myPlayerData.playerDataObject.PlayerAttackProjectile,
             GetComponent<Transform>().position,
             GetComponent<Transform>().rotation);
+        tempBullet.GetComponent<MeshRenderer>().material.color = _myPlayerData.playerDataObject.PlayerAttackColor;
 
-        var dir = (this.transform.up).normalized;
-        tempBullet.transform.position = tempBullet.transform.position + (dir * 1.05f);
+        var dir = (this.transform.forward).normalized;
+        tempBullet.transform.position = tempBullet.transform.position + (dir * .35f);
         Debug.Log(tempBullet.transform.position);
-        tempBullet.GetComponent<Rigidbody>().velocity = dir * (_myPlayerData.playerDataObject.ShotSpeed);
+        tempBullet.GetComponent<Rigidbody>().velocity = dir * (_myPlayerData.playerDataObject.ShotSpeed * GameManager.globalProjectileSpeed);
     }
 }

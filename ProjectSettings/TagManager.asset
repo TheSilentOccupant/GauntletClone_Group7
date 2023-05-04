@@ -9,6 +9,8 @@ TagManager:
   - Valkyrie
   - Wizard
   - Key
+  - Food
+  - Wall
   layers:
   - Default
   - TransparentFX
