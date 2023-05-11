@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PickUpParent : MonoBehaviour
 {
-    protected virtual void OnInteraction()
+    protected virtual void OnInteraction(PlayerData thisData)
     {
 
     }
@@ -14,7 +14,7 @@ public class PickUpParent : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            OnInteraction();
+            OnInteraction(other.gameObject.GetComponent<PlayerData>());
         }
     }
 }

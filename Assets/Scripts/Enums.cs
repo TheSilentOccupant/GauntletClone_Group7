@@ -2,7 +2,7 @@ public enum Size
 {
     Small,
     Medium,
-    Large,
+    Large
 }
 
 public enum Chance
@@ -11,5 +11,15 @@ public enum Chance
     Low,
     Medium,
     High,
-    Guaranteed,
+    Guaranteed
+}
+
+public enum PotionTypes
+{
+    Armor,
+    Magic,
+    ShotPower,
+    ShotSpeed,
+    Speed,
+    FightPower
 }

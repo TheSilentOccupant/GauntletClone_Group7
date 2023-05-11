@@ -80,11 +80,13 @@ public class PlayerTemplate : ScriptableObject
 
     public int Health
     {
+        set { _health = value; }
         get { return _health; }
     }
 
     public int Armor
     {
+        set { _armor = value; }
         get { return _armor; }
     }
 
@@ -165,6 +167,7 @@ public class PlayerTemplate : ScriptableObject
 
     public int Speed
     {
+        set { _speed = value; }
         get { return _speed; }
     }
 

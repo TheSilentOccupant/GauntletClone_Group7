@@ -19,6 +19,7 @@ public class PlayerData : MonoBehaviour
     private PlayerAvatarController _myPlayerAvatarController;
 
     public bool playerReady;
+    public bool isTouchingDeath;
 
     private void Start()
     {
@@ -33,5 +34,11 @@ public class PlayerData : MonoBehaviour
         Debug.Log(playerDataObject.PlayerNumber);
         _myProfileUIManager.PlayerStatsChangedSubscriber(playerDataObject);
         _myPlayerAvatarController.ClassChange(playerDataObject);
+    }
+
+    public void OnTakeDamage(int damage)
+    {
+        playerDataObject.Health -= 1;
+        _myProfileUIManager.PlayerStatsChangedSubscriber(playerDataObject);
     }
 }
