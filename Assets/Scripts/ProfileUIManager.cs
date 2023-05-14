@@ -31,6 +31,8 @@ public class ProfileUIManager : MonoBehaviour
     [SerializeField]
     private Text _health;
     [SerializeField]
+    private Text _score;
+    [SerializeField]
     private Text _speed;
 
     /*
@@ -73,6 +75,17 @@ public class ProfileUIManager : MonoBehaviour
         _playerNumber.text = "Player: " + me.PlayerNumber;
         _characterName.text = me.CharacterName;
         _playerSprite.material = me.CharacterSprite;
+        PlayerHealthChanged(me);
+    }
+
+    public void PlayerHealthChanged(PlayerTemplate me)
+    {
+        _health.text = "" + me.Health;
+    }
+
+    public void PlayerScoreChanged(PlayerTemplate me)
+    {
+        _score.text = ""+me.PlayerScore;
     }
 
     public void PlayerClassDecided()

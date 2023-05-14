@@ -15,6 +15,9 @@ public class PlayerData : MonoBehaviour
 
     [SerializeField]
     private ProfileUIManager _myProfileUIManager;
+
+    public Camera _playerCamera;
+
     [SerializeField]
     private PlayerAvatarController _myPlayerAvatarController;
 
@@ -30,15 +33,35 @@ public class PlayerData : MonoBehaviour
     {
         Debug.Log("Stat Change");
         playerDataObject = classHolder;
-        playerDataObject.PlayerNumber = this.gameObject.GetComponent<PlayerController>().playerIndexNumber + 2;
+        playerDataObject.PlayerNumber = this.gameObject.GetComponent<PlayerController>().playerIndexNumber + 1;
         Debug.Log(playerDataObject.PlayerNumber);
         _myProfileUIManager.PlayerStatsChangedSubscriber(playerDataObject);
         _myPlayerAvatarController.ClassChange(playerDataObject);
     }
 
+    public void OnPlayerClassDecided()
+    {
+        playerDataObject = Instantiate(playerDataObject);
+        playerDataObject.PlayerNumber = this.gameObject.GetComponent<PlayerController>().playerIndexNumber + 1;
+        _myProfileUIManager.PlayerStatsChangedSubscriber(playerDataObject);
+        _myPlayerAvatarController.ClassChange(playerDataObject);
+        _myProfileUIManager.PlayerHealthChanged(playerDataObject);
+        _myProfileUIManager.PlayerScoreChanged(playerDataObject);
+    }
+
     public void OnTakeDamage(int damage)
     {
-        playerDataObject.Health -= 1;
-        _myProfileUIManager.PlayerStatsChangedSubscriber(playerDataObject);
+        playerDataObject.Health -= damage;
+        _myProfileUIManager.PlayerHealthChanged(playerDataObject);
+    }
+    public void OnHeal(int heal)
+    {
+        playerDataObject.Health += heal;
+        _myProfileUIManager.PlayerHealthChanged(playerDataObject);
+    }
+    public void OnScoreUp(int score)
+    {
+        playerDataObject.PlayerScore += score;
+        _myProfileUIManager.PlayerScoreChanged(playerDataObject);
     }
 }

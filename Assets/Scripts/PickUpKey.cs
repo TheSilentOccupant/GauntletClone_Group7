@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class PickUpKey : MonoBehaviour, IPickUp
 {
-    [SerializeField]
-    private GameObject _doorHolder;
-
-    [SerializeField]
-    private GameObject _keyColorCode;
-
-    private void Start()
-    {
-        _keyColorCode.GetComponent<MeshRenderer>().material.color = _doorHolder.GetComponent<MeshRenderer>().material.color;
-    }
-
     public void OnInteraction()
     {
-        _doorHolder.SetActive(false);
+        this.gameObject.SetActive(false);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            if (other.GetComponent<PlayerInventory>().OnPickUp(InventoryItem.Key))
+            {
+                OnInteraction();
+            }
+        }
     }
 }

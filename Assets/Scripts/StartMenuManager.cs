@@ -29,6 +29,6 @@ public class StartMenuManager : MonoBehaviour
         textConnectpromt.gameObject.SetActive(false);
         textStartMenu.gameObject.SetActive(false);
         mainCamera.SetActive(false);
-        buttonStart.GetComponent<MultiplayerEventSystem>().SetSelectedGameObject(null);
+        //buttonStart.GetComponent<MultiplayerEventSystem>().SetSelectedGameObject(null);
     }
 }

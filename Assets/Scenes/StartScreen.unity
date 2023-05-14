@@ -1087,7 +1087,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2005325635}
         m_TargetAssemblyTypeName: StartMenuManager, Assembly-CSharp
         m_MethodName: PlayerJoined
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

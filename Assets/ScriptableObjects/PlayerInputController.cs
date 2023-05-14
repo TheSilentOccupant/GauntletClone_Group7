@@ -44,6 +44,24 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""f8e6f1c1-4de2-41ef-8a05-466b2f83852d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MenuNavi"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""b9dea3df-073f-474d-b107-77b70254bc39"",
+                    ""expectedControlType"": ""Dpad"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -112,6 +130,72 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""34c2634b-fda3-4987-bc52-ff42dcdeb8ca"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""54ad687e-c5b5-4113-a13f-3078aea7a0ac"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuNavi"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""042b4ffc-1037-4829-908c-38fc2955e486"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuNavi"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""b67d95a1-6884-42e2-9019-f16018349126"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuNavi"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""798c887c-71c4-4d81-b6dd-86092144fa76"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuNavi"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""a0e7e51d-335a-4fa3-bb0a-1d1ce8ca5965"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuNavi"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -151,7 +235,7 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
                 {
                     ""name"": """",
                     ""id"": ""492c4607-8fd4-4d21-8d83-6d595e4fa0a8"",
-                    ""path"": ""<Gamepad>/dpad"",
+                    ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller;Controller2"",
@@ -160,21 +244,10 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""58e4c3b4-f4e1-4b4d-b0f0-36ed3e8140e7"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Navigate"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
                     ""name"": """",
                     ""id"": ""989fbbad-757a-4fa6-9431-8e145ece6687"",
                     ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": ""Controller;Controller2"",
                     ""action"": ""Submit"",
@@ -224,6 +297,8 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
+        m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
+        m_Player_MenuNavi = m_Player.FindAction("MenuNavi", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -290,12 +365,16 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Shoot;
+    private readonly InputAction m_Player_Inventory;
+    private readonly InputAction m_Player_MenuNavi;
     public struct PlayerActions
     {
         private @PlayerInputController m_Wrapper;
         public PlayerActions(@PlayerInputController wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
+        public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
+        public InputAction @MenuNavi => m_Wrapper.m_Player_MenuNavi;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -311,6 +390,12 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
                 @Shoot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
+                @Inventory.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
+                @Inventory.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
+                @Inventory.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
+                @MenuNavi.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuNavi;
+                @MenuNavi.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuNavi;
+                @MenuNavi.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuNavi;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -321,6 +406,12 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
+                @Inventory.started += instance.OnInventory;
+                @Inventory.performed += instance.OnInventory;
+                @Inventory.canceled += instance.OnInventory;
+                @MenuNavi.started += instance.OnMenuNavi;
+                @MenuNavi.performed += instance.OnMenuNavi;
+                @MenuNavi.canceled += instance.OnMenuNavi;
             }
         }
     }
@@ -396,6 +487,8 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnInventory(InputAction.CallbackContext context);
+        void OnMenuNavi(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

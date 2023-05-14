@@ -11,6 +11,8 @@ TagManager:
   - Key
   - Food
   - Wall
+  - UpPotion
+  - RegPotion
   layers:
   - Default
   - TransparentFX

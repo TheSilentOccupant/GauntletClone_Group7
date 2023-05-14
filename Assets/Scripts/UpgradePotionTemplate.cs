@@ -8,21 +8,15 @@ public class UpgradePotionTemplate : ScriptableObject
     [SerializeField]
     private string _potionName;
     [SerializeField]
-    private PotionTypes _potionType;
-    [SerializeField]
-    private int _pointUpgrade;
+    private UpgradePotionType _potionType;
     [SerializeField]
     private Color _primaryColor;
     [SerializeField]
     private Color _secondaryColor;
 
-    public PotionTypes PotionType
+    public UpgradePotionType PotionType
     {
         get { return _potionType; }
-    }
-    public int PointUpgrade
-    {
-        get { return _pointUpgrade; }
     }
     public Color PrimaryColor
     {

@@ -6,8 +6,9 @@ public class EnemyDeath : Enemy
 {
     private GameObject touchedPlayer;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         StartCoroutine(DeathTouch());
     }
 

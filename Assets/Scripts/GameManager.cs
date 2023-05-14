@@ -55,11 +55,6 @@ public class GameManager : Singleton<GameManager>
         playerList = new List<GameObject>();
     }
 
-    private void Update()
-    {
-
-    }
-
     public void GameStart()
     {
         isPlayerjoiningAllowed = true;
@@ -106,5 +101,31 @@ public class GameManager : Singleton<GameManager>
         playerCount++;
         //Debug.Log(newPlayer.playerIndex);
         playerList.Add(newPlayer.gameObject);
+    }
+
+    static public void PotionActivation(PlayerData playerInitiated)
+    {
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
+        {
+            GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
+            for (int i = 0; i < enemyObjects.Length; i++)
+            {
+                if (IsWithinScreenBounds(enemyObjects[i]))
+                {
+                    enemyObjects[i].gameObject.SetActive(false);
+                }
+            }
+        }
+    }
+
+    static private bool IsWithinScreenBounds(GameObject obj)
+    {
+        Renderer renderer = obj.GetComponent<Renderer>();
+
+        if (renderer != null)
+        {
+            return GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(Camera.main), renderer.bounds);
+        }
+        return false;
     }
 }

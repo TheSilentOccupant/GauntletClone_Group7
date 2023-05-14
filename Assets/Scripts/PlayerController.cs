@@ -3,18 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.InputSystem.UI;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     private Vector2 _movementInput;
 
-    private PlayerInput _playerInputControl;
+    public PlayerInput _playerInputControl;
 
-    private PlayerInputController _playerInputController;
+    public PlayerInputController _playerInputController;
 
     private Vector2 _previousInput;
-    
     public int playerIndexNumber;
+
+    private float _distance_To_Wall_Left = 2f;
+    private float _distance_To_Wall_Right = 2f;
+    private float _distance_To_Wall_Front = 2f;
+    private float _distance_To_Wall_Back = 2f;
 
     [SerializeField]
     private PlayerData _myPlayerData;
@@ -22,82 +28,72 @@ public class PlayerController : MonoBehaviour
     private GameObject _playerBody;
     [SerializeField]
     private GameObject _playerWeapon;
+    [SerializeField]
+    private GameObject _playerInventory;
+    [SerializeField]
+    private PlayerInventory _playerInventoryData;
 
     private void Awake()
     {
-        _playerInputControl = GetComponent<PlayerInput>();
         playerIndexNumber = _playerInputControl.playerIndex;
+        
         _playerInputController = new PlayerInputController();
-        _playerInputController.Player.Movement.performed += ctx => _movementInput = ctx.ReadValue<Vector2>();
-        _playerInputController.Player.Movement.canceled += ctx => _movementInput = Vector2.zero;
         _playerInputController.Enable();
+        
+        _playerInputController.Player.Movement.performed += ctx => _movementInput = ctx.ReadValue<Vector2>();
+        _playerInputController.Player.Movement.performed += ctx => OnMove(ctx);
+        _playerInputController.Player.Shoot.performed += context => Shoot(context);
+        _playerInputController.Player.Inventory.performed += context => DisplayInventory();
     }
 
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-        //_playerInputController.Player.Shoot.performed += context => Shoot(context);
+        _playerInputController.Player.MenuNavi.Disable();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(_movementInput != Vector2.zero && GameManager.isGameStarted)
-            transform.Translate(new Vector3(_movementInput.x, 0, _movementInput.y) * _myPlayerData.playerDataObject.Speed * Time.deltaTime);
-        Debug.Log(_movementInput);
-
-        
-        
-    }
-    /*
-    private void LateUpdate()
-    {
-        if (_movementInput != Vector2.zero)
+        DistanceToWall();
+        if (_movementInput != Vector2.zero && GameManager.isGameStarted)
         {
-            if (_movementInput == new Vector2(-1, 0))
-            {
-                _playerBody.transform.eulerAngles = new Vector3(0, 90, 0);
-            }
-            //Player face left
-            else if (_movementInput == new Vector2(1, 0))
-            {
-                _playerBody.transform.eulerAngles = new Vector3(0, 270, 0);
-            }
-            //Player face up
-            else if (_movementInput == new Vector2(0, 1))
-            {
-                _playerBody.transform.eulerAngles = new Vector3(0, 180, 0);
-            }
-            //Player face down
-            else if (_movementInput == new Vector2(0, -1))
-            {
-                _playerBody.transform.eulerAngles = new Vector3(0, 0, 0);
-            }
+            transform.Translate(new Vector3(_movementInput.x, 0, _movementInput.y) * _myPlayerData.playerDataObject.Speed * Time.deltaTime);
+        }
+        if ((_distance_To_Wall_Front <= .6 && _movementInput.y < 0) || (_distance_To_Wall_Front <= .6 && _movementInput.y > 0))
+            _movementInput.y = 0;
+        if ((_distance_To_Wall_Front <= .6 && _movementInput.x > 0) || (_distance_To_Wall_Front <= .6 && _movementInput.x < 0))
+            _movementInput.x = 0;
+    }
 
-            else if (_movementInput == new Vector2(-0.707107f, -0.707107f))
+    public void DisplayInventory()
+    {
+        _playerInventoryData.OnDisplayInventory();
+    }
+
+    private void DistanceToWall()
+    {
+        RaycastHit hit;
+        Ray front_Ray = new Ray(transform.position, -_playerBody.transform.forward);
+
+        if (Physics.Raycast(front_Ray, out hit))
+        {
+            _distance_To_Wall_Front = hit.distance;
+            if (hit.distance <= .6f)
             {
-                _playerBody.transform.eulerAngles = new Vector3(0, 45, 0);
-            }
-            else if (_movementInput == new Vector2(-0.707107f, 0.707107f))
-            {
-                _playerBody.transform.eulerAngles = new Vector3(0, 135, 0);
-            }
-            else if (_movementInput == new Vector2(0.707107f, 0.707107f))
-            {
-                _playerBody.transform.eulerAngles = new Vector3(0, 225, 0);
-            }
-            else if (_movementInput == new Vector2(0.707107f, -0.707107f))
-            {
-                _playerBody.transform.eulerAngles = new Vector3(0, 315, 0);
+                Debug.Log(hit.collider.gameObject);
+                _playerInventoryData.OnInteractionBehavior(hit.collider.gameObject);
             }
         }
+        else
+        {
+            _distance_To_Wall_Front = 3;
+        }
     }
-    */
 
     public void Shoot(InputAction.CallbackContext context)
     {
-        if(context.canceled)
-            _playerWeapon.GetComponent<PlayerWeapon>().OnFire();
+        _playerWeapon.GetComponent<PlayerWeapon>().OnFire();
     }
 
     
@@ -105,9 +101,10 @@ public class PlayerController : MonoBehaviour
     {
         if(contex.performed)
         {
+            /*
             _movementInput.x = contex.ReadValue<Vector2>().x;
             _movementInput.y = contex.ReadValue<Vector2>().y;
-
+            */
             if (_movementInput == new Vector2(-1, 0))
             {
                 _playerBody.transform.eulerAngles = new Vector3(0, 90, 0);
@@ -130,17 +127,17 @@ public class PlayerController : MonoBehaviour
 
             else if (_movementInput == new Vector2(-0.707107f, -0.707107f))
             {
-                Debug.Log("1");
+                //Debug.Log("1");
                 _playerBody.transform.eulerAngles = new Vector3(0, 45, 0);
             }
             else if (_movementInput == new Vector2(-0.707107f, 0.707107f))
             {
-                Debug.Log("2");
+                //Debug.Log("2");
                 _playerBody.transform.eulerAngles = new Vector3(0, 135, 0);
             }
             else if (_movementInput == new Vector2(0.707107f, 0.707107f))
             {
-                Debug.Log("3");
+                //Debug.Log("3");
                 _playerBody.transform.eulerAngles = new Vector3(0, 225, 0);
             }
             else if (_movementInput == new Vector2(0.707107f, -0.707107f))

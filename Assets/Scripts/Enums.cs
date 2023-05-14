@@ -14,7 +14,7 @@ public enum Chance
     Guaranteed
 }
 
-public enum PotionTypes
+public enum UpgradePotionType
 {
     Armor,
     Magic,
@@ -22,4 +22,26 @@ public enum PotionTypes
     ShotSpeed,
     Speed,
     FightPower
+}
+
+public enum RegularPotionType
+{
+    Orange,
+    Blue
+}
+
+public enum InventoryItem
+{
+    Empty,
+    /*
+    UpPotionArmor,
+    UpPotionMagic,
+    UpPotionShotPower,
+    UpPotionShotSpeed,
+    UpPotionSpeed,
+    UpPotionFightPower,
+    */
+    RegPotionBlue,
+    RegPotionOrange,
+    Key
 }

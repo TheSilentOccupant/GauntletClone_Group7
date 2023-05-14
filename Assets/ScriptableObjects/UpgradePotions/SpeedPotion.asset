@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: SpeedPotion
   m_EditorClassIdentifier: 
   _potionName: SpeedPotion
-  _potionType: 0
-  _pointUpgrade: 0
+  _potionType: 4
   _primaryColor: {r: 0, g: 0.5937941, b: 1, a: 0}
   _secondaryColor: {r: 1, g: 1, b: 1, a: 0}
