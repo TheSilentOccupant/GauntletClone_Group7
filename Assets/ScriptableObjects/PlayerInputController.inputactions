@@ -20,7 +20,7 @@
                     "id": "8ba2a15e-5505-4f34-865a-5922524fe1a2",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 },
                 {
@@ -29,16 +29,7 @@
                     "id": "f8e6f1c1-4de2-41ef-8a05-466b2f83852d",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "MenuNavi",
-                    "type": "PassThrough",
-                    "id": "b9dea3df-073f-474d-b107-77b70254bc39",
-                    "expectedControlType": "Dpad",
-                    "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 }
             ],
@@ -102,7 +93,7 @@
                     "name": "",
                     "id": "30a76ea6-2047-4547-9470-b30595e0d46c",
                     "path": "<Gamepad>/buttonEast",
-                    "interactions": "Press",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
@@ -113,67 +104,12 @@
                     "name": "",
                     "id": "34c2634b-fda3-4987-bc52-ff42dcdeb8ca",
                     "path": "<Gamepad>/buttonWest",
-                    "interactions": "Press(behavior=1)",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "2D Vector",
-                    "id": "54ad687e-c5b5-4113-a13f-3078aea7a0ac",
-                    "path": "2DVector",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MenuNavi",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "042b4ffc-1037-4829-908c-38fc2955e486",
-                    "path": "<Gamepad>/dpad/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MenuNavi",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "b67d95a1-6884-42e2-9019-f16018349126",
-                    "path": "<Gamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MenuNavi",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "798c887c-71c4-4d81-b6dd-86092144fa76",
-                    "path": "<Gamepad>/dpad/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MenuNavi",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "a0e7e51d-335a-4fa3-bb0a-1d1ce8ca5965",
-                    "path": "<Gamepad>/dpad/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MenuNavi",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 }
             ]
         },

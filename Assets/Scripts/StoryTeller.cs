@@ -4,15 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class StoryTeller : MonoBehaviour
+public class StoryTeller : Singleton<StoryTeller>
 {
     public Text[] storyTextArray;
 
-    public string tempMessage;
+    public static string tempMessage;
 
     private Coroutine tempMessageCoroutine;
 
     private bool isSpeaking;
+
+    public override void Awake()
+    {
+        base.Awake();
+    }
 
     private void Start()
     {
@@ -34,19 +39,21 @@ public class StoryTeller : MonoBehaviour
                 storyTextArray[n].text = "";
             }
         }
+        isSpeaking = true;
         tempMessageCoroutine = StartCoroutine(StoryWriterIEnum(playerClass, 0));
     }
-    private void ShotFoodSubscriber(ClassType playerClass)
+    public static void ShotFoodSubscriber(ClassType playerClass)
     {
-        if (isSpeaking)
+        if (Instance.isSpeaking)
         {
-            StopCoroutine(tempMessageCoroutine);
-            for (int n = 0; n < storyTextArray.Length; n++)
+            Instance.StopCoroutine(Instance.tempMessageCoroutine);
+            for (int n = 0; n < Instance.storyTextArray.Length; n++)
             {
-                storyTextArray[n].text = "";
+                Instance.storyTextArray[n].text = "";
             }
         }
-        tempMessageCoroutine = StartCoroutine(StoryWriterIEnum(playerClass, 2));
+        Instance.isSpeaking = true;
+        Instance.tempMessageCoroutine = Instance.StartCoroutine(Instance.StoryWriterIEnum(playerClass, 2));
     }
 
     IEnumerator StoryWriterIEnum(ClassType playerClass, int Countext)

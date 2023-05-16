@@ -291,8 +291,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ef010011bc29564eb8c59960058ca21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy1: {fileID: 7898760442503922336, guid: 6f6aa6beb0e055f42a8d97c268173866, type: 3}
+  Enemy1: {fileID: 4011335318885199575, guid: 6f6aa6beb0e055f42a8d97c268173866, type: 3}
   Enemy2: {fileID: 1994848950519625626, guid: f3bc3bfeca0da754cbc8c483ae7cd505, type: 3}
+  Enemy3: {fileID: 0}
   EnemySpawned: 0
   SpawnerLevel: 1
   EnemyPool: []

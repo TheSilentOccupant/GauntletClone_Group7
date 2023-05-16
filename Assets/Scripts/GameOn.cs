@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameOn : Singleton<GameManager>
+public class GameOn : Singleton<GameOn>
 {
     private Coroutine GameClock;
 

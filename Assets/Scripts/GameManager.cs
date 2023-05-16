@@ -110,21 +110,22 @@ public class GameManager : Singleton<GameManager>
             GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
             for (int i = 0; i < enemyObjects.Length; i++)
             {
-                if (IsWithinScreenBounds(enemyObjects[i]))
+                if (IsWithinScreenBounds(enemyObjects[i], playerInitiated.playerCamera))
                 {
                     enemyObjects[i].gameObject.SetActive(false);
+                    playerInitiated.OnScoreUp(enemyObjects[i].GetComponent<Enemy>().scoreValue);
                 }
             }
         }
     }
 
-    static private bool IsWithinScreenBounds(GameObject obj)
+    static private bool IsWithinScreenBounds(GameObject obj, Camera playerCamera)
     {
         Renderer renderer = obj.GetComponent<Renderer>();
 
         if (renderer != null)
         {
-            return GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(Camera.main), renderer.bounds);
+            return GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(playerCamera), renderer.bounds);
         }
         return false;
     }

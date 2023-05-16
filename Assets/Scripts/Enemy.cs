@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
 
     private Vector3 _location;
 
+    public int scoreValue;
+
     protected private GameObject _target;
 
     protected private NavMeshAgent _agent;
@@ -19,20 +21,33 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        FindPlayer();
         _agent = this.GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        _agent.destination = _target.transform.position;
+        if (_target != null)
+        {
+            _agent.destination = _target.transform.position;
+        }
+        else
+        {
+            FindPlayer();
+        }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, PlayerData Attacker)
     {
         _health -= damage;
+        if (_health <= 0)
+        {
+            Attacker.OnScoreUp(scoreValue);
+            this.gameObject.SetActive(false);
+        }
     }
+
+    //Matthew addition
     protected void FindPlayer()
     {
         float tempPlayerDistance = 0;
@@ -53,10 +68,6 @@ public class Enemy : MonoBehaviour
             Debug.Log("Player Hit Owie");
             //other.gameobject.GetComponent<Player>.TakeDamage();
             this.gameObject.SetActive(false);
-        }
-        if (other.gameObject.tag == "Bullet")
-        {
-            TakeDamage(5);
         }
     }
 }

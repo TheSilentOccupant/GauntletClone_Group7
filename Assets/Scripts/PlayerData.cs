@@ -18,7 +18,7 @@ public class PlayerData : MonoBehaviour
     [SerializeField]
     private ProfileUIManager _myProfileUIManager;
 
-    public Camera _playerCamera;
+    public Camera playerCamera;
 
     [SerializeField]
     private PlayerAvatarController _myPlayerAvatarController;

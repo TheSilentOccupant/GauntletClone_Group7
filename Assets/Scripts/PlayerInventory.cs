@@ -28,11 +28,7 @@ public class PlayerInventory : MonoBehaviour
         {
             if (inventoryGameObject.activeSelf)
             {
-
-                this.gameObject.GetComponent<PlayerController>()._playerInputController.Player.Movement.Enable();
-                this.gameObject.GetComponent<PlayerController>()._playerInputController.Player.Shoot.Enable();
-                this.gameObject.GetComponent<PlayerController>()._playerInputController.UI.Disable();
-                
+                this.gameObject.GetComponent<PlayerController>().OnMenuClose();
                 this.GetComponent<MultiplayerEventSystem>().sendNavigationEvents = false;
                 //this.GetComponent<MultiplayerEventSystem>().SetSelectedGameObject(null);
                 inventoryGameObject.SetActive(false);
@@ -40,9 +36,7 @@ public class PlayerInventory : MonoBehaviour
             else
             {
                 inventoryGameObject.SetActive(true);
-                this.gameObject.GetComponent<PlayerController>()._playerInputController.Player.Movement.Disable();
-                this.gameObject.GetComponent<PlayerController>()._playerInputController.Player.Shoot.Disable();
-                this.gameObject.GetComponent<PlayerController>()._playerInputController.UI.Enable();
+                this.gameObject.GetComponent<PlayerController>().OnMenuOpen();
                 this.GetComponent<MultiplayerEventSystem>().firstSelectedGameObject = _firstButton;
                 this.GetComponent<MultiplayerEventSystem>().SetSelectedGameObject(_firstButton);
                 this.GetComponent<MultiplayerEventSystem>().sendNavigationEvents = true;
@@ -80,6 +74,26 @@ public class PlayerInventory : MonoBehaviour
             case InventoryItem.RegPotionBlue:
                 GameManager.PotionActivation(_playerData);
                 inventoryList[slotNumber] = InventoryItem.Empty;
+                for (int i = 0; i < inventorySlotList.Length; i++)
+                {
+                    switch (inventoryList[i])
+                    {
+                        case InventoryItem.Empty:
+                            inventorySlotList[i].text = "Empty";
+                            break;
+                        case InventoryItem.RegPotionBlue:
+                            inventorySlotList[i].text = "BluePotion";
+                            break;
+                        case InventoryItem.RegPotionOrange:
+                            inventorySlotList[i].text = "OrangePotion";
+                            break;
+                        case InventoryItem.Key:
+                            inventorySlotList[i].text = "Key";
+                            break;
+                        default:
+                            break;
+                    }
+                }
                 break;
             case InventoryItem.RegPotionOrange:
                 break;
@@ -103,6 +117,7 @@ public class PlayerInventory : MonoBehaviour
         return false;
     }
 
+    //Checks to see if there is a slot for the item, if not, the item is not picked up.
     public bool OnPickUp(InventoryItem item)
     {
         for (int i = 0; i < inventoryList.Length; i++)
@@ -116,6 +131,7 @@ public class PlayerInventory : MonoBehaviour
         return false;
     }
 
+    //Checks what type of upgrade potion was pickedup and enhances the corresponding stat
     public void OnUpgradePotion(GameObject potion)
     {
         UpgradePotionType tempType = potion.GetComponent<PickUpUpgradePotion>().potion;
@@ -145,14 +161,13 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    //If a tagged object comes within interaction distance, it triggers a behavior
     public void OnInteractionBehavior(GameObject other)
     {
         if (other.tag == "Key")
         {
             if (OnPickUp(InventoryItem.Key))
-            {
                 other.gameObject.SetActive(false);
-            }
         }
         if (other.gameObject.tag == "Food")
         {
@@ -167,9 +182,7 @@ public class PlayerInventory : MonoBehaviour
         if (other.tag == "RegPotion")
         {
             if (OnPickUp(InventoryItem.RegPotionBlue))
-            {
                 other.gameObject.SetActive(false);
-            }
         }
         if (other.tag == "Door")
         {
@@ -179,6 +192,7 @@ public class PlayerInventory : MonoBehaviour
         if (other.tag == "UpPotion")
         {
             OnUpgradePotion(other.gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 }

@@ -14,13 +14,12 @@ public class PlayerController : MonoBehaviour
 
     public PlayerInputController _playerInputController;
 
+    public InputActionAsset controlAsset;
+
     private Vector2 _previousInput;
     public int playerIndexNumber;
 
-    private float _distance_To_Wall_Left = 2f;
-    private float _distance_To_Wall_Right = 2f;
     private float _distance_To_Wall_Front = 2f;
-    private float _distance_To_Wall_Back = 2f;
 
     [SerializeField]
     private PlayerData _myPlayerData;
@@ -38,28 +37,67 @@ public class PlayerController : MonoBehaviour
         playerIndexNumber = _playerInputControl.playerIndex;
         
         _playerInputController = new PlayerInputController();
-        _playerInputController.Enable();
         
+        _playerInputController.Enable();
         _playerInputController.Player.Movement.performed += ctx => _movementInput = ctx.ReadValue<Vector2>();
         _playerInputController.Player.Movement.performed += ctx => OnMove(ctx);
         _playerInputController.Player.Shoot.performed += context => Shoot(context);
         _playerInputController.Player.Inventory.performed += context => DisplayInventory();
+        
+
     }
 
     private void Start()
     {
+        
         DontDestroyOnLoad(this.gameObject);
         GameOn.GameStartedEvent += OnGameStartSubscriber;
-        _playerInputController.Player.MenuNavi.Disable();
+
+        /*
+        controlAsset.FindAction("Shoot").Disable();
+        controlAsset.FindAction("Inventory").Disable();
+        */
+        
         _playerInputController.Player.Shoot.Disable();
         _playerInputController.Player.Inventory.Disable();
+        
     }
 
     private void OnGameStartSubscriber()
     {
+        /*
+        controlAsset.FindAction("Shoot").Enable();
+        controlAsset.FindAction("Inventory").Enable();
+        */
+        
         _playerInputController.Player.Shoot.Enable();
         _playerInputController.Player.Inventory.Enable();
+        
     }
+    public void OnMenuClose()
+    {
+        /*
+        controlAsset.FindAction("Shoot").Enable();
+        controlAsset.FindAction("Inventory").Enable();
+        */
+        
+        _playerInputController.Player.Shoot.Enable();
+        _playerInputController.Player.Inventory.Enable();
+        
+    }
+
+    public void OnMenuOpen()
+    {
+        /*
+        controlAsset.FindAction("Shoot").Disable();
+        controlAsset.FindAction("Inventory").Disable();
+        */
+        
+        _playerInputController.Player.Shoot.Enable();
+        _playerInputController.Player.Inventory.Enable();
+        
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -107,8 +145,6 @@ public class PlayerController : MonoBehaviour
     
     public void OnMove(InputAction.CallbackContext contex)
     {
-        if(contex.performed)
-        {
             /*
             _movementInput.x = contex.ReadValue<Vector2>().x;
             _movementInput.y = contex.ReadValue<Vector2>().y;
@@ -153,7 +189,6 @@ public class PlayerController : MonoBehaviour
                 //Debug.Log("4");
                 _playerBody.transform.eulerAngles = new Vector3(0, 315, 0);
             }
-        }
         //transform.Translate(new Vector3(_movementInput.x, 0, _movementInput.y) * this.GetComponent<PlayerData>().PlayerDataObject.Speed * Time.deltaTime);
     }
     
