@@ -13,13 +13,24 @@ public class LobberEnemy : Enemy
     public bool PlayerInRange;
     public bool attacked;
     [SerializeField]
-    private GameObject LobberBullet; 
+    private GameObject LobberBullet;
 
+    private GameObject CurrentBullet;
+
+    Vector3 p0, p1, p2, p01, p12, p012;
+
+    float u;
+
+    float timeStart;
+    float timeDuration = 2f;
+
+    private bool BeginArc;
 
     // Start is called before the first frame update
-    protected override void Start()
+    void Start()
     {
-        base.Start();
+        _target = GameObject.Find("Player");
+        _agent = this.GetComponent<NavMeshAgent>();
         _agent.stoppingDistance = 5f;
     }
 
@@ -30,30 +41,52 @@ public class LobberEnemy : Enemy
 
         if (!PlayerInRange)
         {
-            FindPlayer();
+            _agent.destination = _target.transform.position;
         }
-        else
+        else if (PlayerInRange && !attacked) 
         {
             AttackPlayer();
         }
+        if (BeginArc)
+        {
+            if (attacked)
+            {
+                u = (Time.time - timeStart) / timeDuration;
+                if (u >= 1)
+                {
+                    u = 1;
+                    attacked = false;
+                }
+                p01 = (1 - u) * p0 + u * p1;
+                p12 = (1 - u) * p1 + u * p2;
+                p012 = (1 - u) * p01 + u * p12;
+                CurrentBullet.transform.position = p012;
+            }
+        }
+        
+        
     }
 
     private void AttackPlayer()
     {
         _agent.SetDestination(transform.position);
-        if(_target != null)
-            transform.LookAt(_target.transform);
+        transform.LookAt(_target.transform);
 
         if (!attacked)
         {
             //sents bullet at player
-            Debug.Log("Attacking Player");
-            GameObject CurrentBullet = Instantiate(LobberBullet, this.gameObject.transform.position, this.gameObject.transform.rotation);
+            //Debug.Log("Attacking Player");
+            CurrentBullet = Instantiate(LobberBullet, gameObject.transform.position, gameObject.transform.rotation);
 
-            CurrentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 5000);
+            //CurrentBullet.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * 32f, ForceMode.Impulse);
+            p2 = _target.transform.position;
+            p1 = _agent.transform.position + new Vector3(1, 5, 0);
+            p0 = _agent.transform.position;
+            timeStart = Time.time;
 
             attacked = true;
-            Invoke(nameof(ResetAttack), attackDelay);
+            BeginArc = true;
+            //Invoke(nameof(ResetAttack), attackDelay);
         }
     }
 

@@ -73,7 +73,7 @@ public class ProfileUIManager : MonoBehaviour
     public void PlayerStatsChangedSubscriber(PlayerTemplate me)
     {
         _playerNumber.text = "Player: " + me.PlayerNumber;
-        _characterName.text = me.CharacterName;
+        _characterName.text = me.CharacterName.ToString();
         _playerSprite.material = me.CharacterSprite;
         PlayerHealthChanged(me);
     }

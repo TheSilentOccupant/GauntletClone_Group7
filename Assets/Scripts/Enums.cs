@@ -5,6 +5,14 @@ public enum Size
     Large
 }
 
+public enum ClassType
+{
+    Elf,
+    Valkyire,
+    Warrior,
+    Wizard
+}
+
 public enum Chance
 {
     Miss,

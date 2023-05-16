@@ -12,28 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ead92f663e7d346a81582f22f7744d, type: 3}
   m_Name: Warrior
   m_EditorClassIdentifier: 
-  _playerNumber: 2
+  _playerNumber: 1
+  _playerScore: 0
   _sprite: {fileID: 2100000, guid: f3822e84fd253004681a131cdaf5ff95, type: 2}
-  _characterName: Warrior
+  _characterName: 2
   _description: The Warrior is great at ranged attacks but has low armor.
   _health: 700
   _armor: 20
-  _shotStrengthMin: 2
-  _shotStrengthMax: 2
+  _magic: 1
+  _shotPower: 2
   _shotSpeed: 2
   _shotSize: 2
-  _shotMonsterMin: 2
-  _shotMonsterMax: 2
-  _shotGeneratorMin: 1
-  _shotGeneratorMax: 1
-  _shotPotionMonsterMin: 1
-  _shotPotionMonsterMax: 1
-  _shotPotionGeneratorMin: 0
-  _shotPotionGeneratorMax: 0
-  _meleeMonsterMin: 2
-  _meleeMonsterMax: 3
-  _meleeGeneratorChance: 1
-  _speed: 1
+  _fightPower: 3
+  _speed: 2
   _playerBodyColor: {r: 0.33962262, g: 0.21038297, b: 0.065681726, a: 0}
   _playerHeadColor: {r: 0.40236738, g: 0.5977443, b: 0.6226415, a: 0}
   _playerAttackColor: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 0}

@@ -4,14 +4,16 @@ using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
+using UnityEngine.UI;
 
 public class PlayerData : MonoBehaviour
 {
-    /*
-    public delegate void playerStatsChangedDelegate(PlayerTemplate classHolder);
-    public event playerStatsChangedDelegate playerStatsChangedEvent;
-    */
+    public delegate void playerLowHealthDelegate(ClassType classHolder);
+    public event playerLowHealthDelegate playerLowHealthEvent;
+    
     public PlayerTemplate playerDataObject;
+
+    public Text storyText;
 
     [SerializeField]
     private ProfileUIManager _myProfileUIManager;
@@ -23,6 +25,8 @@ public class PlayerData : MonoBehaviour
 
     public bool playerReady;
     public bool isTouchingDeath;
+
+    bool isWarned1, isWarned2, isWarned3, isWarned4;
 
     private void Start()
     {
@@ -52,11 +56,21 @@ public class PlayerData : MonoBehaviour
     public void OnTakeDamage(int damage)
     {
         playerDataObject.Health -= damage;
+        if (playerDataObject.Health == 200 && !isWarned1)
+        {
+            isWarned1 = true;
+            playerLowHealthEvent(playerDataObject.CharacterName);
+        }
         _myProfileUIManager.PlayerHealthChanged(playerDataObject);
     }
     public void OnHeal(int heal)
     {
         playerDataObject.Health += heal;
+        if (playerDataObject.Health >= 200)
+        {
+            isWarned1 = true;
+            playerLowHealthEvent(playerDataObject.CharacterName);
+        }
         _myProfileUIManager.PlayerHealthChanged(playerDataObject);
     }
     public void OnScoreUp(int score)

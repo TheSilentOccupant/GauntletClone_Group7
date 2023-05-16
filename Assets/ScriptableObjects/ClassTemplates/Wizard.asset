@@ -12,28 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ead92f663e7d346a81582f22f7744d, type: 3}
   m_Name: Wizard
   m_EditorClassIdentifier: 
-  _playerNumber: 2
+  _playerNumber: 1
+  _playerScore: 0
   _sprite: {fileID: 2100000, guid: f8e74253b53d7be45a652c8c4a5c358b, type: 2}
-  _characterName: Wizard
+  _characterName: 3
   _description: The Wizard is great at ranged attacks but has low armor.
   _health: 700
-  _armor: 0
-  _shotStrengthMin: 1
-  _shotStrengthMax: 2
+  _armor: 1
+  _magic: 3
+  _shotPower: 3
   _shotSpeed: 3.5
   _shotSize: 1
-  _shotMonsterMin: 3
-  _shotMonsterMax: 3
-  _shotGeneratorMin: 3
-  _shotGeneratorMax: 3
-  _shotPotionMonsterMin: 3
-  _shotPotionMonsterMax: 3
-  _shotPotionGeneratorMin: 2
-  _shotPotionGeneratorMax: 2
-  _meleeMonsterMin: 1
-  _meleeMonsterMax: 1
-  _meleeGeneratorChance: 0
-  _speed: 1
+  _fightPower: 1
+  _speed: 2
   _playerBodyColor: {r: 0.1477839, g: 0.20775293, b: 0.764151, a: 0}
   _playerHeadColor: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 0}
   _playerAttackColor: {r: 0.34282663, g: 0.6258782, b: 0.6792453, a: 0}

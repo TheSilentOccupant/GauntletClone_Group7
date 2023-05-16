@@ -12,28 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ead92f663e7d346a81582f22f7744d, type: 3}
   m_Name: Valkyrie
   m_EditorClassIdentifier: 
-  _playerNumber: 2
+  _playerNumber: 1
+  _playerScore: 0
   _sprite: {fileID: 2100000, guid: 6a1900334282f954d800defed451f1a6, type: 2}
-  _characterName: Valkyrie
+  _characterName: 1
   _description: The Elf is great at ranged attacks but has low armor.
   _health: 700
   _armor: 30
-  _shotStrengthMin: 1
-  _shotStrengthMax: 1
+  _magic: 2
+  _shotPower: 2
   _shotSpeed: 3
   _shotSize: 1
-  _shotMonsterMin: 2
-  _shotMonsterMax: 3
-  _shotGeneratorMin: 0
-  _shotGeneratorMax: 1
-  _shotPotionMonsterMin: 1
-  _shotPotionMonsterMax: 2
-  _shotPotionGeneratorMin: 0
-  _shotPotionGeneratorMax: 0
-  _meleeMonsterMin: 2
-  _meleeMonsterMax: 2
-  _meleeGeneratorChance: 2
-  _speed: 2
+  _fightPower: 2
+  _speed: 3
   _playerBodyColor: {r: 0.95213556, g: 1, b: 0, a: 0}
   _playerHeadColor: {r: 1, g: 1, b: 1, a: 0}
   _playerAttackColor: {r: 0.8396226, g: 0.82917744, b: 0.4950605, a: 0}

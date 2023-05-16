@@ -9,8 +9,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private GameObject Enemy1;//ghost prefab
     [SerializeField]
-    private GameObject Enemy2;//ghoul prefab
-    public enum EnemyType { Ghost,Ghoul,Goblin};
+    private GameObject Enemy2;//Lobber prefab
+    [SerializeField]
+    private GameObject Enemy3;//Goblin Prefab
+    public enum EnemyType { Ghost,Lobber,Goblin};
     public EnemyType EnemySpawned;
     [Range(1, 3)]
     [SerializeField]
@@ -33,6 +35,12 @@ public class EnemySpawner : MonoBehaviour
             case 0:
                 SpawnerEnemy = Enemy1;
                 break;
+            case EnemyType.Lobber:
+                SpawnerEnemy = Enemy2;
+                break;
+            case EnemyType.Goblin:
+                SpawnerEnemy = Enemy3;
+                break;
             default:
                 SpawnerEnemy = Enemy1;
                 break;
@@ -42,7 +50,7 @@ public class EnemySpawner : MonoBehaviour
         EnemyPool = new List<GameObject>();
         for (int i = 0; i < amountToPool; i++)
         {
-                GameObject Enemy = (GameObject.Instantiate(SpawnerEnemy));
+            GameObject Enemy = (GameObject.Instantiate(SpawnerEnemy));
             Enemy.SetActive(false);
             EnemyPool.Add(Enemy);
         }

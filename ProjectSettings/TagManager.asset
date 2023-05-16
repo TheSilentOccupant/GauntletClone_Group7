@@ -13,6 +13,9 @@ TagManager:
   - Wall
   - UpPotion
   - RegPotion
+  - Door
+  - Treasure
+  - Enemy
   layers:
   - Default
   - TransparentFX

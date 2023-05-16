@@ -4,20 +4,33 @@ using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour
 {
+
+
     [SerializeField]
     private PlayerData _myPlayerData;
 
-    public void OnFire()
+    [SerializeField]
+    private GameObject tempBullet;
+
+    private void Start()
     {
-        GameObject tempBullet;
+        GameOn.GameStartedEvent += OnGameStartSubscriber;
+    }
+
+    private void OnGameStartSubscriber()
+    {
         tempBullet = Instantiate(_myPlayerData.playerDataObject.PlayerAttackProjectile,
             GetComponent<Transform>().position,
             GetComponent<Transform>().rotation);
         tempBullet.GetComponent<MeshRenderer>().material.color = _myPlayerData.playerDataObject.PlayerAttackColor;
+        tempBullet.SetActive(false);
+    }
 
+    public void OnFire()
+    {
+        tempBullet.SetActive(true);
         var dir = (this.transform.forward).normalized;
-        tempBullet.transform.position = tempBullet.transform.position + (dir * .35f);
-        Debug.Log(tempBullet.transform.position);
+        tempBullet.transform.position = this.transform.position + (dir * .35f);
         tempBullet.GetComponent<Rigidbody>().velocity = dir * (_myPlayerData.playerDataObject.ShotSpeed * GameManager.globalProjectileSpeed);
     }
 }

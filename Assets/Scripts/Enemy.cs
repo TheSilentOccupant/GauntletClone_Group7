@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.GraphicsBuffer;
 
 public class Enemy : MonoBehaviour
 {
@@ -18,22 +19,20 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
+        FindPlayer();
         _agent = this.GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        FindPlayer();
-        if(_target != null)
-            _agent.destination = _target.transform.position;
+        _agent.destination = _target.transform.position;
     }
 
     public void TakeDamage(int damage)
     {
         _health -= damage;
     }
-
     protected void FindPlayer()
     {
         float tempPlayerDistance = 0;
@@ -46,7 +45,6 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-    
 
     private void OnTriggerEnter(Collider other)
     {

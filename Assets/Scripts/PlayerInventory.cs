@@ -53,21 +53,6 @@ public class PlayerInventory : MonoBehaviour
                         case InventoryItem.Empty:
                             inventorySlotList[i].text = "Empty";
                             break;
-                        /*
-                    case InventoryItem.UpPotionArmor:
-                        inventorySlotList[i].text = "Empty";
-                        break;
-                    case InventoryItem.UpPotionMagic:
-                        break;
-                    case InventoryItem.UpPotionShotPower:
-                        break;
-                    case InventoryItem.UpPotionShotSpeed:
-                        break;
-                    case InventoryItem.UpPotionSpeed:
-                        break;
-                    case InventoryItem.UpPotionFightPower:
-                        break;
-                        */
                         case InventoryItem.RegPotionBlue:
                             inventorySlotList[i].text = "BluePotion";
                             break;
@@ -131,6 +116,35 @@ public class PlayerInventory : MonoBehaviour
         return false;
     }
 
+    public void OnUpgradePotion(GameObject potion)
+    {
+        UpgradePotionType tempType = potion.GetComponent<PickUpUpgradePotion>().potion;
+        int tempValue = potion.GetComponent<PickUpUpgradePotion>().potionValue;
+        switch (tempType)
+        {
+            case UpgradePotionType.Armor:
+                _playerData.playerDataObject.Armor += tempValue;
+                break;
+            case UpgradePotionType.Magic:
+                _playerData.playerDataObject.Magic += tempValue;
+                break;
+            case UpgradePotionType.ShotPower:
+                _playerData.playerDataObject.ShotPower += tempValue;
+                break;
+            case UpgradePotionType.ShotSpeed:
+                _playerData.playerDataObject.ShotSpeed += tempValue;
+                break;
+            case UpgradePotionType.Speed:
+                _playerData.playerDataObject.Speed += tempValue;
+                break;
+            case UpgradePotionType.FightPower:
+                _playerData.playerDataObject.FightPower += tempValue;
+                break;
+            default:
+                break;
+        }
+    }
+
     public void OnInteractionBehavior(GameObject other)
     {
         if (other.tag == "Key")
@@ -148,6 +162,7 @@ public class PlayerInventory : MonoBehaviour
         if (other.tag == "Treasure")
         {
             _playerData.OnScoreUp(100);
+            other.gameObject.SetActive(false);
         }
         if (other.tag == "RegPotion")
         {
@@ -161,12 +176,9 @@ public class PlayerInventory : MonoBehaviour
             if (OnCheckKey())
                 other.gameObject.SetActive(false);
         }
-        //I was deffinitly not conflicted on how to implement the interactions
-        /*
         if (other.tag == "UpPotion")
         {
-            _playerData.OnHeal(100);
+            OnUpgradePotion(other.gameObject);
         }
-        */
     }
 }

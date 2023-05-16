@@ -235,7 +235,7 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
                 {
                     ""name"": """",
                     ""id"": ""492c4607-8fd4-4d21-8d83-6d595e4fa0a8"",
-                    ""path"": ""<Gamepad>/leftStick"",
+                    ""path"": ""<Gamepad>/dpad"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller;Controller2"",

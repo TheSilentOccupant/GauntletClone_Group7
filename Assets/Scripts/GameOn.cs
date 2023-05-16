@@ -2,14 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameOn : MonoBehaviour
+public class GameOn : Singleton<GameManager>
 {
     private Coroutine GameClock;
 
+    public delegate void GameStartedDelegate();
+    public static event GameStartedDelegate GameStartedEvent;
+
+    public override void Awake()
+    {
+        base.Awake();
+    }
     private void Start()
     {
         GameManager.clockGameTime = 0;
         GameManager.isGameStarted = true;
+        GameStartedEvent();
         GameClock = StartCoroutine(Clock());
     }
 

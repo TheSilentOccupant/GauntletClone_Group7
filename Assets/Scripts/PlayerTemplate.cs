@@ -12,7 +12,7 @@ public class PlayerTemplate : ScriptableObject
     [SerializeField]
     private Material _sprite;
     [SerializeField]
-    private string _characterName;
+    private ClassType _characterName;
     [SerializeField]
     private string _description;
     [SerializeField]
@@ -33,6 +33,8 @@ public class PlayerTemplate : ScriptableObject
     private float _shotSpeed;
     [SerializeField]
     private Size _shotSize;
+    [SerializeField]
+    private int _fightPower;
     /*
     [SerializeField]
     private int _shotMonsterMin;
@@ -85,7 +87,7 @@ public class PlayerTemplate : ScriptableObject
         get { return _sprite; }
     }
 
-    public string CharacterName
+    public ClassType CharacterName
     {
         get { return _characterName; }
     }
@@ -110,6 +112,11 @@ public class PlayerTemplate : ScriptableObject
     {
         set { _shotPower = value; }
         get { return _shotPower; }
+    }
+    public int FightPower
+    {
+        set { _fightPower = value; }
+        get { return _fightPower; }
     }
     public float ShotSpeed
     {

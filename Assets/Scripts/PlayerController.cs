@@ -49,9 +49,17 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        GameOn.GameStartedEvent += OnGameStartSubscriber;
         _playerInputController.Player.MenuNavi.Disable();
+        _playerInputController.Player.Shoot.Disable();
+        _playerInputController.Player.Inventory.Disable();
     }
 
+    private void OnGameStartSubscriber()
+    {
+        _playerInputController.Player.Shoot.Enable();
+        _playerInputController.Player.Inventory.Enable();
+    }
     // Update is called once per frame
     void Update()
     {
