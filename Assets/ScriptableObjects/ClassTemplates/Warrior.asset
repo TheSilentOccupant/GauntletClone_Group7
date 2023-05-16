@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ead92f663e7d346a81582f22f7744d, type: 3}
   m_Name: Warrior
   m_EditorClassIdentifier: 
-  _playerNumber: 1
+  _playerNumber: 2
   _playerScore: 0
   _sprite: {fileID: 2100000, guid: f3822e84fd253004681a131cdaf5ff95, type: 2}
   _characterName: 2
@@ -21,7 +21,7 @@ MonoBehaviour:
   _armor: 20
   _magic: 1
   _shotPower: 2
-  _shotSpeed: 2
+  _shotSpeed: 4
   _shotSize: 2
   _fightPower: 3
   _speed: 2

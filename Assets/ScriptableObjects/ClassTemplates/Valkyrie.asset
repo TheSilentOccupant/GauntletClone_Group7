@@ -21,7 +21,7 @@ MonoBehaviour:
   _armor: 30
   _magic: 2
   _shotPower: 2
-  _shotSpeed: 3
+  _shotSpeed: 4
   _shotSize: 1
   _fightPower: 2
   _speed: 3

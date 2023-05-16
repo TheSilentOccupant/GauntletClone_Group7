@@ -35,15 +35,20 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         playerIndexNumber = _playerInputControl.playerIndex;
-        
-        _playerInputController = new PlayerInputController();
-        
+
+        //_playerInputController = new PlayerInputController();
+
+        _playerInputControl.actions.FindAction("Shoot").performed += context => Shoot(context);
+        _playerInputControl.actions.FindAction("Movement").performed += ctx => _movementInput = ctx.ReadValue<Vector2>();
+        _playerInputControl.actions.FindAction("Movement").performed += ctx => OnMove(ctx);
+        _playerInputControl.actions.FindAction("Inventory").performed += context => DisplayInventory();
+        /*
         _playerInputController.Enable();
         _playerInputController.Player.Movement.performed += ctx => _movementInput = ctx.ReadValue<Vector2>();
         _playerInputController.Player.Movement.performed += ctx => OnMove(ctx);
         _playerInputController.Player.Shoot.performed += context => Shoot(context);
         _playerInputController.Player.Inventory.performed += context => DisplayInventory();
-        
+        */
 
     }
 
@@ -54,48 +59,53 @@ public class PlayerController : MonoBehaviour
         GameOn.GameStartedEvent += OnGameStartSubscriber;
 
         /*
-        controlAsset.FindAction("Shoot").Disable();
-        controlAsset.FindAction("Inventory").Disable();
-        */
-        
         _playerInputController.Player.Shoot.Disable();
         _playerInputController.Player.Inventory.Disable();
-        
+        */
+        _playerInputControl.actions.FindAction("Shoot").Disable();
+        _playerInputControl.actions.FindAction("Inventory").Disable();
+
     }
 
     private void OnGameStartSubscriber()
     {
-        /*
-        controlAsset.FindAction("Shoot").Enable();
-        controlAsset.FindAction("Inventory").Enable();
-        */
+
+        _playerInputControl.actions.FindAction("Shoot").Enable();
+        _playerInputControl.actions.FindAction("Inventory").Enable();
         
+        /*
         _playerInputController.Player.Shoot.Enable();
         _playerInputController.Player.Inventory.Enable();
-        
+        */
     }
     public void OnMenuClose()
     {
-        /*
-        controlAsset.FindAction("Shoot").Enable();
-        controlAsset.FindAction("Inventory").Enable();
-        */
+
+        _playerInputControl.actions.FindAction("Shoot").Enable();
+        _playerInputControl.actions.FindAction("Movement").Enable();
         
+        /*
         _playerInputController.Player.Shoot.Enable();
         _playerInputController.Player.Inventory.Enable();
-        
+        */
     }
 
     public void OnMenuOpen()
     {
-        /*
-        controlAsset.FindAction("Shoot").Disable();
-        controlAsset.FindAction("Inventory").Disable();
-        */
+
+        _playerInputControl.actions.FindAction("Shoot").Disable();
+        _playerInputControl.actions.FindAction("Movement").Disable();
         
+        /*
         _playerInputController.Player.Shoot.Enable();
         _playerInputController.Player.Inventory.Enable();
-        
+        */
+    }
+
+    public void OnPlayerDeath()
+    {
+        _playerInputControl.actions.Disable();
+        this.gameObject.layer = 2;
     }
 
     // Update is called once per frame

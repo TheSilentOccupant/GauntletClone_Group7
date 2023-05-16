@@ -17,11 +17,11 @@ MonoBehaviour:
   _sprite: {fileID: 2100000, guid: 7e6fa5167ad650740bb25238e399c524, type: 2}
   _characterName: 0
   _description: The Elf is great at ranged attacks but has low armor.
-  _health: 205
+  _health: 700
   _armor: 10
   _magic: 1
   _shotPower: 3
-  _shotSpeed: 3.5
+  _shotSpeed: 5
   _shotSize: 0
   _fightPower: 1
   _speed: 4

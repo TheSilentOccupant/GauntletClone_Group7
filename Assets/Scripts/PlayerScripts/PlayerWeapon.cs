@@ -18,7 +18,7 @@ public class PlayerWeapon : MonoBehaviour
     private void OnGameStartSubscriber()
     {
         tempBullet = Instantiate(_myPlayerData.playerDataObject.PlayerAttackProjectile,
-            GetComponent<Transform>().position,
+            this.gameObject.transform.localPosition,
             GetComponent<Transform>().rotation);
         tempBullet.GetComponent<MeshRenderer>().material.color = _myPlayerData.playerDataObject.PlayerAttackColor;
         tempBullet.SetActive(false);
@@ -30,6 +30,7 @@ public class PlayerWeapon : MonoBehaviour
         tempBullet.SetActive(true);
         var dir = (this.transform.forward).normalized;
         tempBullet.transform.position = this.transform.position + (dir * .15f);
+        tempBullet.transform.rotation = this.transform.rotation;
         tempBullet.GetComponent<Rigidbody>().velocity = dir * (_myPlayerData.playerDataObject.ShotSpeed * GameManager.globalProjectileSpeed);
     }
 }

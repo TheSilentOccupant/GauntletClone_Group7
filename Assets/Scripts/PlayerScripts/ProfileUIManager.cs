@@ -35,6 +35,11 @@ public class ProfileUIManager : MonoBehaviour
     [SerializeField]
     private Text _speed;
 
+    [SerializeField]
+    private GameObject _gameOverScreen;
+    [SerializeField]
+    private Text _finalScoreText;
+
     /*
     public string PlayerNumber
     {
@@ -92,6 +97,12 @@ public class ProfileUIManager : MonoBehaviour
     {
         ClassMenu.SetActive(false);
         GameManager.PlayerClassDecidedSubscriber();
+    }
+
+    public void OnPlayerDeath(PlayerTemplate playerDataObject)
+    {
+        _gameOverScreen.SetActive(true);
+        _finalScoreText.text = "Final Score: " + playerDataObject.PlayerScore;
     }
     
 }

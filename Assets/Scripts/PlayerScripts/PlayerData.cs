@@ -18,6 +18,9 @@ public class PlayerData : MonoBehaviour
     [SerializeField]
     private ProfileUIManager _myProfileUIManager;
 
+    [SerializeField]
+    private PlayerController _myPlayerController;
+
     public Camera playerCamera;
 
     [SerializeField]
@@ -25,6 +28,7 @@ public class PlayerData : MonoBehaviour
 
     public bool playerReady;
     public bool isTouchingDeath;
+    public bool isDead;
 
     bool isWarned1, isWarned2, isWarned3, isWarned4;
 
@@ -62,15 +66,16 @@ public class PlayerData : MonoBehaviour
             playerLowHealthEvent(playerDataObject.CharacterName);
         }
         _myProfileUIManager.PlayerHealthChanged(playerDataObject);
+        if (playerDataObject.Health <= 0)
+        {
+            _myPlayerController.OnPlayerDeath();
+            _myProfileUIManager.OnPlayerDeath(playerDataObject);
+            isDead = true;
+        }
     }
     public void OnHeal(int heal)
     {
         playerDataObject.Health += heal;
-        if (playerDataObject.Health >= 200)
-        {
-            isWarned1 = true;
-            playerLowHealthEvent(playerDataObject.CharacterName);
-        }
         _myProfileUIManager.PlayerHealthChanged(playerDataObject);
     }
     public void OnScoreUp(int score)

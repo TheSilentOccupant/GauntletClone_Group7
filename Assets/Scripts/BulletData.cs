@@ -18,12 +18,12 @@ public class BulletData : MonoBehaviour
     private void DistanceToWall()
     {
         RaycastHit hit;
-        Ray front_Ray = new Ray(transform.position, -this.transform.forward);
+        Ray front_Ray = new Ray(transform.position, this.transform.forward);
 
         if (Physics.Raycast(front_Ray, out hit))
         {
             _distance_To_Wall_Front = hit.distance;
-            if (hit.distance <= .6f)
+            if (hit.distance <= .1f)
             {
                 if (hit.transform.gameObject.tag == "Wall")
                 {
@@ -39,10 +39,15 @@ public class BulletData : MonoBehaviour
                     hit.transform.gameObject.SetActive(false);
                     this.gameObject.SetActive(false);
                 }
+                if (hit.transform.gameObject.tag == "RegPotion")
+                {
+                    hit.transform.gameObject.GetComponent<RegularPotion>().OnInteraction(playerBulletOwner);
+                    this.gameObject.SetActive(false);
+                }
                 if (hit.transform.gameObject.tag == "Enemy")
                 {
-                    this.gameObject.SetActive(false);
                     hit.transform.gameObject.GetComponent<Enemy>().TakeDamage(BulletDamage, playerBulletOwner);
+                    this.gameObject.SetActive(false);
                 }
             }
         }

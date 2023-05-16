@@ -17,6 +17,8 @@ TagManager:
   - Treasure
   - Enemy
   - Exit
+  - EnemyBullet
+  - EnemySpawner
   layers:
   - Default
   - TransparentFX

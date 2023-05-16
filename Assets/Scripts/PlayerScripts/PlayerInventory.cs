@@ -29,7 +29,7 @@ public class PlayerInventory : MonoBehaviour
             if (inventoryGameObject.activeSelf)
             {
                 this.gameObject.GetComponent<PlayerController>().OnMenuClose();
-                this.GetComponent<MultiplayerEventSystem>().sendNavigationEvents = false;
+                //this.GetComponent<MultiplayerEventSystem>().sendNavigationEvents = false;
                 //this.GetComponent<MultiplayerEventSystem>().SetSelectedGameObject(null);
                 inventoryGameObject.SetActive(false);
             }
@@ -39,7 +39,7 @@ public class PlayerInventory : MonoBehaviour
                 this.gameObject.GetComponent<PlayerController>().OnMenuOpen();
                 this.GetComponent<MultiplayerEventSystem>().firstSelectedGameObject = _firstButton;
                 this.GetComponent<MultiplayerEventSystem>().SetSelectedGameObject(_firstButton);
-                this.GetComponent<MultiplayerEventSystem>().sendNavigationEvents = true;
+                //this.GetComponent<MultiplayerEventSystem>().sendNavigationEvents = true;
                 for (int i = 0; i < inventorySlotList.Length; i++)
                 {
                     switch (inventoryList[i])
@@ -64,7 +64,8 @@ public class PlayerInventory : MonoBehaviour
         }
 
     }
-
+    //Behavior if a player attempts to activate an object in their inventory
+    //Items lacking behavior will do nothing.
     public void OnInteraction(int slotNumber)
     {
         switch (inventoryList[slotNumber])
@@ -167,7 +168,10 @@ public class PlayerInventory : MonoBehaviour
         if (other.tag == "Key")
         {
             if (OnPickUp(InventoryItem.Key))
+            {
+                _playerData.OnScoreUp(100);
                 other.gameObject.SetActive(false);
+            }
         }
         if (other.gameObject.tag == "Food")
         {
@@ -193,6 +197,10 @@ public class PlayerInventory : MonoBehaviour
         {
             OnUpgradePotion(other.gameObject);
             other.gameObject.SetActive(false);
+        }
+        if (other.tag == "Exit")
+        {
+            other.GetComponent<Exit>().OnInteraction(this.gameObject);
         }
     }
 }

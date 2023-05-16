@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class Exit : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _exitPoint;
+    public GameObject _exitPoint;
 
-    private void OnTriggerEnter(Collider other)
+    
+    public void OnInteraction(GameObject player)
     {
-        if(other.gameObject.tag == "Player")
-        {
-            other.gameObject.transform.position = _exitPoint.transform.position;
-        }
+        player.gameObject.transform.position = _exitPoint.transform.position;
     }
+    
 }
